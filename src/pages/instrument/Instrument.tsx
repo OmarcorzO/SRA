@@ -2,36 +2,67 @@ import React from "react";
 import FullLayout from "../../Layouts/FullLayout";
 
 const initialAnswers = {
-  ingresos_economicos: "",
-  rango_ingresos_mensuales: "",
-  rango_ingresos_hogar: "",
-  dispositivo_electronico: "",
-  fuente_ingresos_hogar: "",
-  personas_dependen: "",
-  acceso_internet: "",
-  vive_con: "",
-  nivel_educativo_padre: "",
-  nivel_educativo_madre: "",
-  tiene_hijos: "",
-  relacion_familiar: "",
-  apoyo_emocional: "",
-  rango_edad: "",
-  estado_civil: "",
-  condicion_salud: "",
-  lugar_residencia: "",
-  medio_transporte: "",
-  interes_carrera: "",
-  experiencia_aprendizaje: "",
-  utilidad_carrera: "",
-  dificultades_academicas: "",
-  apoyo_academico: "",
-  infraestructura: "",
-  conectividad: "",
-  calidad_servicio: "",
+  ingresos_economicos: "-1",
+  rango_ingresos_mensuales: "-1",
+  rango_ingresos_hogar: "-1",
+  dispositivo_electronico: "-1",
+  fuente_ingresos_hogar: "-1",
+  personas_dependen: "-1",
+  acceso_internet: "-1",
+  vive_con: "-1",
+  nivel_educativo_padre: "-1",
+  nivel_educativo_madre: "-1",
+  tiene_hijos: "-1",
+  relacion_familiar: "-1",
+  apoyo_emocional: "-1",
+  rango_edad: "-1",
+  estado_civil: "-1",
+  condicion_salud: "-1",
+  lugar_residencia: "-1",
+  medio_transporte: "-1",
+  interes_carrera: "-1",
+  experiencia_aprendizaje: "-1",
+  utilidad_carrera: "-1",
+  dificultades_academicas: "-1",
+  apoyo_academico: "-1",
+  infraestructura: "-1",
+  conectividad: "-1",
+  calidad_servicio: "-1",
+};
+
+const initialErrors = {
+  ingresos_economicos: true,
+  rango_ingresos_mensuales: true,
+  rango_ingresos_hogar: true,
+  dispositivo_electronico: true,
+  fuente_ingresos_hogar: true,
+  personas_dependen: true,
+  acceso_internet: true,
+  vive_con: true,
+  nivel_educativo_padre: true,
+  nivel_educativo_madre: true,
+  tiene_hijos: true,
+  relacion_familiar: true,
+  apoyo_emocional: true,
+  rango_edad: true,
+  estado_civil: true,
+  condicion_salud: true,
+  lugar_residencia: true,
+  medio_transporte: true,
+  interes_carrera: true,
+  experiencia_aprendizaje: true,
+  utilidad_carrera: true,
+  dificultades_academicas: true,
+  apoyo_academico: true,
+  infraestructura: true,
+  conectividad: true,
+  calidad_servicio: true,
 };
 
 const Instrument = () => {
   const [answers, setAnswers] = React.useState(initialAnswers);
+  const [errors, setErrors] = React.useState(initialErrors);
+  const [formSubmitted, setFormSubmitted] = React.useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -39,18 +70,45 @@ const Instrument = () => {
       ...prevAnswers,
       [name]: value,
     }));
+
+    if (value === "-1") {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [name]: true,
+      }));
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [name]: false,
+      }));
+    }
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const totalSum = Object.values(answers).reduce((sum, value) => sum + (parseInt(value) || 0), 0);
-    console.log("Sumatoria total:", totalSum);
+    setFormSubmitted(true)
+    if (isFormValid()) {
+      const totalSum = Object.values(answers).reduce((sum, value) => sum + (parseInt(value) || 0), 0);
+      console.log("Sumatoria total:", totalSum);
+  
+      const puntaje_socio_normalizado = (totalSum - 130) / (338 - 130) // Normalización del puntaje
+      let factor_socio = (puntaje_socio_normalizado * 0.4) + ((parseInt(answers.nivel_educativo_padre) + parseInt(answers.nivel_educativo_madre)) / 8) * 0.3 + (parseInt(answers.fuente_ingresos_hogar) / 4) * 0.3 - (parseInt(answers.personas_dependen) * 0.05)
+      factor_socio = Math.max(0, Math.min(1, factor_socio))
 
-    const puntaje_socio_normalizado = (totalSum - 130) / (338 - 130) // Normalización del puntaje
-    let factor_socio = (puntaje_socio_normalizado * 0.4) + ((parseInt(answers.nivel_educativo_padre) + parseInt(answers.nivel_educativo_madre)) / 8) * 0.3 + (parseInt(answers.fuente_ingresos_hogar) / 4) * 0.3 - (parseInt(answers.personas_dependen) * 0.05)
-    factor_socio = Math.max(0, Math.min(1, factor_socio))
+      console.log('EL FACTOR ES:', factor_socio)
+    } else {
+      console.log('Errorsitos', errors)
+    }
+  };
 
-    console.log('EL FACTOR ES:', factor_socio)
+  const MessageError = (obj: boolean) =>{
+    return (obj && formSubmitted) && (
+      <div className="text-danger">Campo requerido</div>
+    )
+  }
+
+  const isFormValid = () => {
+    return Object.values(errors).every((error) => error === false);
   };
 
   return (
@@ -78,6 +136,7 @@ const Instrument = () => {
                     <option value="7">Emprendedor</option>
                     <option value="5">Sin ingresos economicos</option>
                   </select>
+                  {MessageError(errors.ingresos_economicos)}
                 </div>
                 {answers.ingresos_economicos !== "5" && (
                   <div className="form-group">
@@ -97,6 +156,7 @@ const Instrument = () => {
                       <option value="10">Entre 2 y 4 SMMLV</option>
                       <option value="13">Más de 4 SMMLV</option>
                     </select>
+                    {MessageError(errors.rango_ingresos_mensuales)}
                   </div>
                 )}
                 <div className="form-group">
@@ -115,6 +175,7 @@ const Instrument = () => {
                     <option value="10">Entre 2 y 4 SMMLV</option>
                     <option value="13">Más de 4 SMMLV</option>
                   </select>
+                  {MessageError(errors.rango_ingresos_hogar)}
                 </div>
                 <div className="form-group">
                   <label className="font-14 bold mb-2">
@@ -130,6 +191,7 @@ const Instrument = () => {
                     <option value="si">Sí</option>
                     <option value="no">No</option>
                   </select>
+                  {MessageError(errors.dispositivo_electronico)}
                 </div>
               </div>
               <div className="col-lg-6">
@@ -150,6 +212,7 @@ const Instrument = () => {
                     <option value="7">Apoyo familiar</option>
                     <option value="5">Otros</option>
                   </select>
+                  {MessageError(errors.fuente_ingresos_hogar)}
                 </div>
                 <div className="form-group">
                   <label className="font-14 bold mb-2">
@@ -167,6 +230,7 @@ const Instrument = () => {
                     <option value="7">3-5</option>
                     <option value="5">Más de 5</option>
                   </select>
+                  {MessageError(errors.personas_dependen)}
                 </div>
                 <div className="form-group">
                   <label className="font-14 bold mb-2">
@@ -182,6 +246,7 @@ const Instrument = () => {
                     <option value="13">Sí</option>
                     <option value="5">No</option>
                   </select>
+                  {MessageError(errors.acceso_internet)}
                 </div>
               </div>
             </div>
@@ -210,6 +275,7 @@ const Instrument = () => {
                     <option value="7">En residencia universitaria</option>
                     <option value="5">Con amigos</option>
                   </select>
+                  {MessageError(errors.vive_con)}
                 </div>
                 <div className="form-group">
                   <label className="font-14 bold mb-2">
@@ -229,6 +295,7 @@ const Instrument = () => {
                       Estudios técnicos o universitarios
                     </option>
                   </select>
+                  {MessageError(errors.nivel_educativo_padre)}
                 </div>
                 <div className="form-group">
                   <label className="font-14 bold mb-2">
@@ -248,6 +315,7 @@ const Instrument = () => {
                       Estudios técnicos o universitarios
                     </option>
                   </select>
+                  {MessageError(errors.nivel_educativo_madre)}
                 </div>
               </div>
               <div className="col-lg-6">
@@ -265,6 +333,7 @@ const Instrument = () => {
                     <option value="5">Sí</option>
                     <option value="13">No</option>
                   </select>
+                  {MessageError(errors.tiene_hijos)}
                 </div>
                 <div className="form-group">
                   <label className="font-14 bold mb-2">
@@ -282,6 +351,7 @@ const Instrument = () => {
                     <option value="7">Regular</option>
                     <option value="5">Mala</option>
                   </select>
+                  {MessageError(errors.relacion_familiar)}
                 </div>
                 <div className="form-group">
                   <label className="font-14 bold mb-2">
@@ -298,6 +368,7 @@ const Instrument = () => {
                     <option value="13">Sí</option>
                     <option value="5">No</option>
                   </select>
+                  {MessageError(errors.apoyo_emocional)}
                 </div>
               </div>
             </div>
@@ -326,6 +397,7 @@ const Instrument = () => {
                     <option value="7">26-30 años</option>
                     <option value="5">Más de 30 años</option>
                   </select>
+                  {MessageError(errors.rango_edad)}
                 </div>
                 <div className="form-group">
                   <label className="font-14 bold mb-2">
@@ -343,6 +415,7 @@ const Instrument = () => {
                     <option value="7">Divorciado/a</option>
                     <option value="5">Viudo/a</option>
                   </select>
+                  {MessageError(errors.estado_civil)}
                 </div>
                 <div className="form-group">
                   <label className="font-14 bold mb-2">
@@ -358,6 +431,7 @@ const Instrument = () => {
                     <option value="5">Sí</option>
                     <option value="13">No</option>
                   </select>
+                  {MessageError(errors.condicion_salud)}
                 </div>
               </div>
               <div className="col-lg-6">
@@ -375,6 +449,7 @@ const Instrument = () => {
                     <option value="13">Zona urbana</option>
                     <option value="5">Zona rural</option>
                   </select>
+                  {MessageError(errors.lugar_residencia)}
                 </div>
                 <div className="form-group">
                   <label className="font-14 bold mb-2">
@@ -393,6 +468,7 @@ const Instrument = () => {
                     <option value="7">Bicicleta</option>
                     <option value="5">Caminando</option>
                   </select>
+                  {MessageError(errors.medio_transporte)}
                 </div>
               </div>
             </div>
@@ -422,6 +498,7 @@ const Instrument = () => {
                     <option value="7">Poco de mi interés</option>
                     <option value="5">Nada de mi interés</option>
                   </select>
+                  {MessageError(errors.interes_carrera)}
                 </div>
                 <div className="form-group">
                   <label className="font-14 bold mb-2">
@@ -439,6 +516,7 @@ const Instrument = () => {
                     <option value="7">Regular</option>
                     <option value="5">Mala</option>
                   </select>
+                  {MessageError(errors.experiencia_aprendizaje)}
                 </div>
               </div>
               <div className="col-lg-6">
@@ -459,6 +537,7 @@ const Instrument = () => {
                     <option value="7">Poco útil</option>
                     <option value="5">Nada útil</option>
                   </select>
+                  {MessageError(errors.utilidad_carrera)}
                 </div>
                 <div className="form-group">
                   <label className="font-14 bold mb-2">
@@ -477,6 +556,7 @@ const Instrument = () => {
                     <option value="7">Relación con profesores</option>
                     <option value="5">Falta de recursos</option>
                   </select>
+                  {MessageError(errors.dificultades_academicas)}
                 </div>
               </div>
             </div>
@@ -506,6 +586,7 @@ const Instrument = () => {
                     <option value="7">No, nunca</option>
                     <option value="5">No lo solicité</option>
                   </select>
+                  {MessageError(errors.apoyo_academico)}
                 </div>
                 <div className="form-group">
                   <label className="font-14 bold mb-2">
@@ -523,6 +604,7 @@ const Instrument = () => {
                     <option value="7">Regular</option>
                     <option value="5">Mala</option>
                   </select>
+                  {MessageError(errors.infraestructura)}
                 </div>
               </div>
               <div className="col-lg-6">
@@ -543,6 +625,7 @@ const Instrument = () => {
                     <option value="7">Regular</option>
                     <option value="5">Mala</option>
                   </select>
+                  {MessageError(errors.conectividad)}
                 </div>
                 <div className="form-group">
                   <label className="font-14 bold mb-2">
@@ -561,14 +644,15 @@ const Instrument = () => {
                     <option value="7">Poco eficiente pero amable</option>
                     <option value="5">Poco eficiente y poco amable</option>
                   </select>
+                  {MessageError(errors.calidad_servicio)}
                 </div>
               </div>
             </div>
           </div>
-        </section>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary mx-4 mb-4">
           Enviar
         </button>
+        </section>
       </form>
     </FullLayout>
   );

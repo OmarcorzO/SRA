@@ -33,29 +33,29 @@ const Login = () => {
                 onSubmit={handleSubmit}
               >
                 <h2 className="geex-content__authentication__title">
-                  Sign In to Your Account 👋
+                  Ingresa tu cuenta 👋
                 </h2>
                 <div className="geex-content__authentication__form-group">
-                  <label htmlFor="emailSignIn">Your Email</label>
+                  <label htmlFor="emailSignIn">Correo electrónico</label>
                   <input
                     type="email"
                     id="emailSignIn"
                     name="emailSignIn"
-                    placeholder="Enter Your Email"
+                    placeholder="Ingresa tu correo"
                     required
                   />
                   <i className="uil-envelope"></i>
                 </div>
                 <div className="geex-content__authentication__form-group">
                   <div className="geex-content__authentication__label-wrapper">
-                    <label htmlFor="loginPassword">Your Password</label>
-                    <a href="recuperar">Forgot Password?</a>
+                    <label htmlFor="loginPassword">Contraseña</label>
+                    <a href="recuperar">¿Olvidaste tu contraseña?</a>
                   </div>
                   <input
                     type="password"
                     id="loginPassword"
                     name="loginPassword"
-                    placeholder="Password"
+                    placeholder="Contraseña"
                     required
                   />
                   <i className="uil-eye toggle-password-type"></i>

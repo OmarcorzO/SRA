@@ -20,32 +20,19 @@ const Sidebar = () => {
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="/instrumento">
               <i className="icofont-shopping-cart"></i>
-              <span className="link-title">Ecommerce</span>
+              <span className="link-title">Caracterización</span>
             </a>
-            <ul className="nav sub-menu">
-              <li>
-                <a href="/ecommerce/dashboard1">Dashboard 1</a>
-              </li>
-              <li>
-                <a href="/ecommerce/dashboard2">Dashboard 2</a>
-              </li>
-              <li>
-                <a href="/ecommerce/orders">Orders</a>
-              </li>
-              <li>
-                <a href="/ecommerce/products">Products Catalog</a>
-              </li>
-            </ul>
           </li>
           <li>
-            <a href="/social-media">
+            <a href="/analiticas">
               <i className="icofont-chart-histogram"></i>
-              <span className="link-title">Social Media Analytics</span>
+              <span className="link-title">Analíticas</span>
             </a>
           </li>
-          <li className="nav-category">Apps</li>
+          <li className="nav-category">Examples</li>
+          <li className="nav-category">Test</li>
           <li>
             <a href="#">
               <i className="icofont-mail-box"></i>

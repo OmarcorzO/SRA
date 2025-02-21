@@ -10,6 +10,8 @@ import './assets/DashminStyles/css/style.css'
 import './assets/GeexStyles/css/style.css'
 import './assets/styles.css'
 import '@iconscout/unicons/css/line.css';
+import './assets/DashminStyles/fonts/icofont/icofont.min.css';
+import './assets/CustomStyles/wizardstyles.scss'
 
 import Routing from "./Routing.tsx";
 

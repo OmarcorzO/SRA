@@ -1,8 +1,47 @@
 .custom-wizard {
+  ul {
+    padding-block: 25px;
+    padding-inline: 23px;
+  }
   li {
     flex-basis: 0;
     -webkit-box-flex: 1;
     flex-grow: 1;
     text-align: center;
-  }   
+    clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 0 50%, 0% 0%);
+    p {
+      font-weight: 700
+    }
+    .active {
+      
+      color: white;
+      border-color: #67cf94;
+      background: #67cf94 
+    }
+    .icon.active {
+      background: #67cf94 !important;
+    }
+    // .active .icofont-check-alt {
+    //   // clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+    //   color: #67cf94;
+    //   border-color: #67cf94;
+    //   background-color: #67cf94;
+    // }
+    .inactive {
+      // clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+      color: gray;
+      border-color: #dbf7e8;
+      background: #dbf7e8;
+    }
+    
+  }
+  // .arrow {
+  //   // position: relative;
+  //   // left: 90%;
+  //   // margin-top: -80px;
+  //   border-top: 40px solid transparent;
+  //   border-bottom: 40px solid transparent;
+  //   border-left: 30px solid #ff0000;
+  //   // z-index: 7;
+  // }   
 }

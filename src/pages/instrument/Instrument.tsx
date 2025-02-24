@@ -1,7 +1,5 @@
 import React from "react";
 import FullLayout from "../../Layouts/FullLayout";
-import StepWizard from "react-step-wizard";
-
 
 const initialAnswers = {
   ingresos_economicos: "-1",
@@ -99,6 +97,7 @@ const Instrument = () => {
     e.preventDefault();
     setFormSubmitted(true);
     if (isFormValid()) {
+      setStep(6)
       const totalSum = Object.values(answers).reduce(
         (sum, value) => sum + (parseInt(value) || 0),
         0
@@ -133,81 +132,82 @@ const Instrument = () => {
     return Object.values(errors).every((error) => error === false);
   };
 
-  const handleStepChange = (e: any) => {
-    console.log(e)
-    setStep(e.activeStep - 1)
-  }
-
   const handleBack = () => {
-
-  }
+    step > 1 && setStep(step - 1);
+  };
 
   const handleNext = () => {
-
-  }
+    step < 5 && setStep(step + 1);
+  };
 
   return (
     <FullLayout>
-      <StepWizard onStepChange={handleStepChange}>
-        <div>1</div>
-        <div>2</div>
-      </StepWizard>
-      <button onClick={handleBack}>Previous</button>
-      <button onClick={handleNext}>Next</button>
-      <form>
-        <h3 className="font-20 mt-30 mx-4">Cuestionario Sociodemográfico</h3>
+      <form onSubmit={handleSubmit}>
+        <div style={{ display: "flex"}}>
+          <h3 className="font-20 mt-30 mx-4">Cuestionario Sociodemográfico</h3>
+          <a style={{ color: "white" }} className="btn mx-3 mt-3" onClick={handleBack}>
+            Previous
+          </a>
+          <a style={{ color: "white" }} className="btn mx-3 mt-3" onClick={handleNext}>
+            Next
+          </a>
+        </div>
         <div id="smartwizard" className="custom-wizard">
           <ul className="nav">
             <li>
               <a
                 type="button"
-                className={`nav-link ${step === 1 ? "active" : ""}`}
+                className={`nav-link ${step === 1 ? "active" : "inactive"}`}
                 onClick={() => setStep(1)}
               >
                 Socioeconómico
               </a>
+              {/* <div className="arrow" /> */}
             </li>
             <li>
               <a
                 type="button"
-                className={`nav-link ${step === 2 ? "active" : ""}`}
+                className={`nav-link ${step === 2 ? "active" : "inactive"}`}
                 onClick={() => setStep(2)}
               >
                 Familiar
               </a>
+              {/* <div className="arrow" /> */}
             </li>
             <li>
               <a
                 type="button"
-                className={`nav-link ${step === 3 ? "active" : ""}`}
+                className={`nav-link ${step === 3 ? "active" : "inactive"}`}
                 onClick={() => setStep(3)}
               >
                 Personal
               </a>
+              {/* <div className="arrow" /> */}
             </li>
             <li>
               <a
                 type="button"
-                className={`nav-link ${step === 3 ? "active" : ""}`}
+                className={`nav-link ${step === 4 ? "active" : "inactive"}`}
                 onClick={() => setStep(4)}
               >
                 Académico
               </a>
+              {/* <div className="arrow" /> */}
             </li>
             <li>
               <a
                 type="button"
-                className={`nav-link ${step === 3 ? "active" : ""}`}
+                className={`nav-link ${step === 5 ? "active" : "inactive"}`}
                 onClick={() => setStep(5)}
               >
                 Institucional
               </a>
+              {/* <div className="arrow" /> */}
             </li>
             <li>
               <a
                 type="button"
-                className={`nav-link ${step === 3 ? "active" : ""}`}
-                onClick={() => setStep(6)}
+                className={`nav-link icon ${step === 6 ? "active" : "inactive"}`}
               >
                 <i className="icofont-check-alt"></i>
               </a>
@@ -789,17 +789,19 @@ const Instrument = () => {
             )}
             {step === 6 && (
               <div className="tab-panel">
-                <h2 className="text_color font-30 mb-20">Done Successfully!</h2>
-                <p>Your form has been submitted successfully.</p>
+                <section>
+                  <div className="card-body pt-0">
+                    <h4 className="font-30 mb-20">Done Successfully!</h4>
+                    <p>Your form has been submitted successfully.</p>
+                    <div className="mx-4">
+                      INFO DEL TEST: <br />-{result.totalSum} <br />-
+                      {result.factor_socio}
+                    </div>
+                  </div>
+                </section>
               </div>
             )}
           </div>
-        </div>
-      </form>
-
-      <form onSubmit={handleSubmit}>
-        <div className="mx-4">
-          INFO DEL TEST: <br />-{result.totalSum} <br />-{result.factor_socio}
         </div>
       </form>
     </FullLayout>

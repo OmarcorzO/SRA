@@ -1,6 +1,7 @@
-import React from 'react'
+import React from "react";
 import { useNavigate } from "react-router";
 import BlankLayout from "../../Layouts/BlankLayout";
+import "./Auth.scss";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -14,27 +15,27 @@ const Login = () => {
 
   return (
     <BlankLayout>
-      <main className="geex-content">
+      <main className="p-4" style={{ height: "100vh" }}>
         <div className="geex-content__authentication">
+          <div className="geex-content__authentication__img figure-log">
+            {/* F */}
+          </div>
           <div className="geex-content__authentication__content">
             <div className="geex-content__authentication__content__wrapper">
               <div className="geex-content__authentication__content__logo">
-                <a href="index.php">
-                  <img
-                    className="logo"
-                    src="assets/img/logo.png"
-                    alt="logo"
-                  />
-                </a>
+                <img className="logo" src="assets/img/logo.svg" alt="logo" />
               </div>
               <form
                 id="signInForm"
                 className="geex-content__authentication__form"
                 onSubmit={handleSubmit}
               >
-                <h2 className="geex-content__authentication__title">
-                  Ingresa tu cuenta 👋
-                </h2>
+                <h1 className="geex-content__authentication__title m-1">
+                  Ingresa a tu cuenta
+                </h1>
+                <h5 className="geex-content__authentication__desc">
+                  Bienvenido a Student Retention Analytics
+                </h5>
                 <div className="geex-content__authentication__form-group">
                   <label htmlFor="emailSignIn">Correo electrónico</label>
                   <input
@@ -47,9 +48,9 @@ const Login = () => {
                   <i className="uil-envelope"></i>
                 </div>
                 <div className="geex-content__authentication__form-group">
-                  <div className="geex-content__authentication__label-wrapper">
+                  <div className="geex-content__authentication__label-wrapper geex-content__terms">
                     <label htmlFor="loginPassword">Contraseña</label>
-                    <a href="recuperar">¿Olvidaste tu contraseña?</a>
+                    <a href="recuperar" style={{ color: 'var(--primary-color)' }}>¿Olvidaste tu contraseña?</a>
                   </div>
                   <input
                     type="password"
@@ -64,14 +65,14 @@ const Login = () => {
                   type="submit"
                   className="geex-content__authentication__form-submit"
                 >
-                  Sign In
+                  Iniciar Sesión
                 </button>
               </form>
             </div>
           </div>
-          <div className="geex-content__authentication__img">
-            <img src="./assets/img/authentication.svg" alt="" />
-          </div>
+        </div>
+        <div className="footer-login">
+          <img src="./assets/img/footer-login.svg" alt="" />
         </div>
       </main>
     </BlankLayout>

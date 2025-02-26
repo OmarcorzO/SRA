@@ -6,10 +6,10 @@ const Header = () => {
     <header className="header white-bg fixed-top d-flex align-content-center flex-wrap">
       <div className="logo">
         <a href="/" className="default-logo">
-          <img src="assets/img/logo.png" alt="Logo" />
+          <img src="assets/img/logo.svg" alt="Logo" />
         </a>
         <a href="/" className="mobile-logo">
-          <img src="../../../assets/img/mobile-logo.png" alt="Mobile Logo" />
+          <img src="assets/img/mobile-logo.svg" alt="Mobile Logo" />
         </a>
       </div>
 

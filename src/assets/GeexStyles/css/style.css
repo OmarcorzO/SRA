@@ -32,8 +32,11 @@ CSS INDEX
   }
 }
 
+body {
+  height: 100vh;
+}
+
 .geex-header {
-  display: none;
   padding: 20px 0 30px;
 }
 
@@ -75,10 +78,9 @@ CSS INDEX
 }
 
 .geex-header__menu {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   gap: 30px;
+  justify-content: flex-end
 }
 
 .geex-header__menu__item {
@@ -281,7 +283,6 @@ Sidebar
     max-height: 100vh;
     overflow-y: auto;
     z-index: 100;
-    display: none;
   }
 }
 
@@ -310,6 +311,7 @@ Sidebar
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+          justify-content: center;
 }
 
 .geex-sidebar__logo img {
@@ -426,7 +428,6 @@ Sidebar
 }
 
 .geex-sidebar__submenu {
-  display: none;
   width: 100%;
   -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
           box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
@@ -2024,13 +2025,6 @@ blockquote span:before {
   .geex-main-content {
     -webkit-padding-start: 340px;
             padding-inline-start: 340px;
-  }
-}
-
-@media only screen and (max-width: 1199px) {
-  .geex-main-content {
-    -webkit-padding-start: 22px;
-            padding-inline-start: 22px;
   }
 }
 

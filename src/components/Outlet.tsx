@@ -6,7 +6,7 @@ interface OutletProps {
 }
 
 const Outlet = ({ children }: OutletProps) => {
-  return <div className="main-content">{children}</div>;
+  return <div className="geex-content">{children}</div>;
 };
 
 export default Outlet;

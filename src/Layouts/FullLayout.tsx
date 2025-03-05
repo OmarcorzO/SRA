@@ -7,12 +7,12 @@ import { ReactNode } from "react";
 
 const FullLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="wrapper">
+    <div>
       <Header />
-      <div className="main-wrapper">
+      <main className="geex-main-content">
         <Sidebar />
         <Outlet>{children}</Outlet>
-      </div>
+      </main>
     </div>
   );
 };

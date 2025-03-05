@@ -1,70 +1,128 @@
-import React from 'react'
+import React from "react";
+import "./Components.scss";
 
 const Sidebar = () => {
+  const [isOpen, setIsOpen] = React.useState(0);
+
+  const selOpt = (num: number) => {
+    isOpen === num ? setIsOpen(0) : setIsOpen(num);
+  };
+
   return (
     // Sidebar
-    <nav className="sidebar" data-trigger="scrollbar">
-      <div className="sidebar-header d-none d-lg-block">
-        <div className="sidebar-toogle-pin">
-          <i className="icofont-tack-pin"></i>
+    <div className="geex-sidebar">
+      <a href="#" className="geex-sidebar__close">
+        <i className="uil uil-times"></i>
+      </a>
+      <div className="geex-sidebar__wrapper">
+        <div className="geex-sidebar__header">
+          <a href="/" className="geex-sidebar__logo">
+            <img
+              className="logo-lite logo-lg"
+              src="assets/img/logo.svg"
+              alt="logo"
+            />
+            <img
+              className="logo-dark"
+              src="/assets/img/logo-lite.svg"
+              alt="logo"
+            />
+          </a>
+          <a href="/" className="geex-sidebar__logo">
+            <img
+              className="logo-lite logo-sm"
+              src="assets/img/mobile-logo.svg"
+              alt="logo"
+            />
+            <img
+              className="logo-dark"
+              src="/assets/img/mobile-logo.svg"
+              alt="logo"
+            />
+          </a>
+        </div>
+        <nav className="geex-sidebar__menu-wrapper">
+          <ul className="geex-sidebar__menu">
+            <li className="geex-sidebar__menu__item has-children">
+              <a
+                href="#"
+                className="geex-sidebar__menu__link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  selOpt(1);
+                }}
+              >
+                <span>Demo</span>
+              </a>
+              {isOpen === 1 && (
+                <ul className="geex-sidebar__submenu">
+                  <li className="geex-sidebar__menu__link">
+                    <a href="/server-management">Server Management</a>
+                  </li>
+                  <li className="geex-sidebar__menu__link">
+                    <a href="/banking">Banking</a>
+                  </li>
+                  <li className="geex-sidebar__menu__link">
+                    <a href="/crypto">Crypto</a>
+                  </li>
+                  <li className="geex-sidebar__menu__link">
+                    <a href="/invoicing">Invoicing</a>
+                  </li>
+                </ul>
+              )}
+            </li>
+            <li className="geex-sidebar__menu__item has-children">
+              <a
+                href="#"
+                className="geex-sidebar__menu__link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  selOpt(2);
+                }}
+              >
+                <span>Layout</span>
+              </a>
+              {isOpen === 2 && (
+                <ul className="geex-sidebar__submenu">
+                  <li className="geex-sidebar__menu__link">
+                    <a href="#" className="geex-customizer__btn--top">
+                      Top Menu
+                    </a>
+                  </li>
+                  <li className="geex-sidebar__menu__link">
+                    <a href="#" className="geex-customizer__btn--side">
+                      Side Menu
+                    </a>
+                  </li>
+                  <li className="geex-sidebar__menu__link">
+                    <a href="#" className="geex-customizer__btn--light">
+                      Light Demo
+                    </a>
+                  </li>
+                  <li className="geex-sidebar__menu__link">
+                    <a href="#" className="geex-customizer__btn--dark">
+                      Dark Demo
+                    </a>
+                  </li>
+                </ul>
+              )}
+            </li>
+          </ul>
+        </nav>
+        <div className="geex-sidebar__footer">
+          <span className="geex-sidebar__footer__title">
+            Geex Modern Dashboard
+          </span>
+          <p className="geex-sidebar__footer__copyright">
+            © 2024 All Rights Reserved
+          </p>
+          <p className="geex-sidebar__footer__author">
+            Made with <span className="heart-icon">♥</span> by{" "}
+            <a href="#">PixcelsThemes</a>
+          </p>
         </div>
       </div>
-
-      <div className="sidebar-body">
-        <ul className="nav">
-          <li className="nav-category">Main</li>
-          <li>
-            <a href="/dashboard">
-              <i className="icofont-pie-chart"></i>
-              <span className="link-title">Dashboard</span>
-            </a>
-          </li>
-          <li>
-            <a href="/instrumento">
-              <i className="icofont-shopping-cart"></i>
-              <span className="link-title">Caracterización</span>
-            </a>
-          </li>
-          <li>
-            <a href="/analiticas">
-              <i className="icofont-chart-histogram"></i>
-              <span className="link-title">Analíticas</span>
-            </a>
-          </li>
-          <li className="nav-category">Examples</li>
-          <li className="nav-category">Test</li>
-          <li>
-            <a href="#">
-              <i className="icofont-mail-box"></i>
-              <span className="link-title">Email</span>
-            </a>
-            <ul className="nav sub-menu">
-              <li>
-                <a href="/email/inbox">Inbox</a>
-              </li>
-              <li>
-                <a href="/email/read">Read</a>
-              </li>
-              <li>
-                <a href="/email/compose">Compose</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="/chat">
-              <i className="icofont-wechat"></i>
-              <span className="link-title">Chat</span>
-            </a>
-          </li>
-          <li>
-            <a href="/calendar">
-              <i className="icofont-calendar"></i>
-              <span className="link-title">Calendar</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    </div>
     // End Sidebar
   );
 };

@@ -252,6 +252,7 @@ const Instrument = () => {
                               className="form-control"
                               value={answers.rango_ingresos_mensuales}
                               onChange={handleChange}
+                              disabled={answers.ingresos_economicos === "-1"}
                             >
                               <option value="-1">---Seleccione---</option>
                               <option value="5">Menos de 1 SMMLV</option>

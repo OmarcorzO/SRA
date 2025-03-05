@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1034 1087">
-  <!-- Generator: Adobe Illustrator 29.3.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 146)  -->
+<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1006.39 998.77">
   <defs>
     <style>
-      .st0 {
+      .cls-1 {
         fill: #fe753f;
       }
     </style>
   </defs>
-  <polygon class="st0" points="744.23 766.11 618.48 766.11 618.07 439.23 289.77 439.23 289.77 317.99 741.66 317.99 744.23 766.11"/>
-  <polygon class="st0" points="570.83 768.49 462 768.49 460.94 603.47 289.77 603.5 289.77 482.77 571.28 482.74 570.83 768.49"/>
-  <polygon class="st0" points="430.53 769.01 364.87 769.01 364.42 710.76 289.77 710.76 289.77 645.06 430.53 645.06 430.53 769.01"/>
+  <polygon class="cls-1" points="1006.39 992.36 727.93 992.36 727.01 268.48 0 268.48 0 0 1000.71 0 1006.39 992.36"/>
+  <polygon class="cls-1" points="622.41 997.62 381.4 997.62 379.05 632.18 0 632.26 0 364.9 623.4 364.82 622.41 997.62"/>
+  <polygon class="cls-1" points="311.7 998.77 166.31 998.77 165.32 869.79 0 869.79 0 724.29 311.7 724.29 311.7 998.77"/>
 </svg>

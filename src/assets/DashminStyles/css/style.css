@@ -147,15 +147,6 @@ label {
   margin: 0;
 }
 
-button,
-button[type="submit"],
-input[type="submit"] {
-  border: none;
-  cursor: pointer;
-  -webkit-appearance: button;
-  -moz-appearance: button;
-}
-
 select {
   width: 100%;
   max-width: 100%;
@@ -185,47 +176,8 @@ textarea {
   outline: 0 !important;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  padding: 0;
-  margin: 0;
-  -ms-word-wrap: break-word;
-  word-wrap: break-word;
-  font-weight: 700;
-  line-height: 1;
-  text-transform: capitalize;
-}
-
 p:last-child {
   margin: 0;
-}
-
-h1 {
-  font-size: 40px;
-}
-
-h2 {
-  font-size: 36px;
-}
-
-h3 {
-  font-size: 26px;
-}
-
-h4 {
-  font-size: 17px;
-}
-
-h5 {
-  font-size: 15px;
-}
-
-h6 {
-  font-size: 14px;
 }
 
 .list-unstyled, .status-list, .list-invoice {
@@ -564,16 +516,13 @@ h6, .attach-file.change-card-attachment, .dashboard-date.style--five input, .dro
   font-weight: 600;
 }
 
-.bold, .dashboard-date.style--five > i, .dropdown-menu.style--four a:hover, .dropdown-menu.style--four a.selected, .avatar, .full-date, .pagination ul li, .follow-btn, .link-btn, .details-btn, table.style--two td, table.cart_table tr td:first-child, table.cart_table tr td:last-child span, table.invoice-list-table.style-two td:nth-child(4), table.style-two.contact-list-table td:nth-child(4), table.invoice-list-table.style-two td:nth-child(5), table.style-two.contact-list-table td:nth-child(5), table.invoice-list.style-two td:nth-child(4), table.invoice-list.style-two td:nth-child(5), .ProgressBar-wrap .ProgressBar-percentage, .ProgressBar-wrap2 .ProgressBar-percentage, .progress-info div:not(:first-child), .process-bar-wrapper.style--four .process-width, .notification-icon .count, .avatar .count, .sidebar .sidebar-body li.nav-category, #apex_radar-chart .apexcharts-title-text, .statistic-row.days, .product-details-content .product_title, .product-details-content .woocommerce-Price-amount, .product-details-content .woocommerce-product-details__short-description h5, .form-row label, .cart-collaterals .shop_table th, .cart-collaterals .shop_table td, .mail-list-item:hover .mail-text .msg,
-.main-mail:hover .mail-text .msg, .message:hover p, .message.active p, .assign_to .assign-content, .assign-tag .tag-text, .add-new_task .label-text, .task-details .label-text, .fc table, #projectTaskDetails .modal-content .project-main-title textarea, #projectTaskDetails .modal-content .checklist .process-bar-wrapper .process-name, #smartwizard .nav li a, #example-vertical > .steps ul li a, #example-vertical > .actions ul li a[href="#previous"], .chip .chip-content > div, .chip .chip-content .img, .color-circle, .topic, .timeline .event:before, .base-timer__label,
-.base-timer__text, .p_nav-link, .info-list li, .shepherd-element .shepherd-content footer .shepherd-buttons li .shepherd-button {
-  font-weight: 700;
-}
-
 /* Border Radius */
 .radius-7 {
   border-radius: 7px !important;
 }
+/* *************************************************** */
+/* SECCION PELIGROSAAAAAAAAAAA DE LA SEGUNDA PLANTILLA */
+/* *************************************************** */
 
 .radius-5, .dashboard-date.style--four, .dashboard-date.style--five, .tag_color, table.cart_table tr td:nth-child(3) span, table.cart_table tr td:nth-child(3) input, table.cart_table tr td:nth-child(4) span, table.cart_table tr td:nth-child(4) input, .theme-input-style.style--three, .theme-input-style.style--four, .search-form .theme-input-group input.redius-5, .search-form .theme-input-group .color-pic input, .color-pic .search-form .theme-input-group input, .todo-list .single-row:after, .fc-bg table tbody td, .fc-view > table thead th.fc-day-header, .fc-toolbar.fc-header-toolbar, .labels .label, .label-item .label, #projectTaskDetails .modal-content .project-main-title textarea, #projectTaskDetails .modal-content .cover-img .attach-file, #projectTaskDetails .modal-content .checklist .checklist-item-wrap .checklist-item-details, #projectTaskDetails .modal-content .checklist-new-item .theme-input-style, #projectTaskDetails .modal-content .edit-actions textarea, #projectChecklistModal .checklist-copy-source, .project-board-select-wrap, .input-group.addon .input-group-prepend .input-group-text,
 .input-group.addon .input-group-append .input-group-text {
@@ -626,6 +575,10 @@ h6, .attach-file.change-card-attachment, .dashboard-date.style--five input, .dro
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
+
+/* *************************************************** */
+/* FIN DE LA SECCION PELIGROSAAAAAAAAAAAAAAAAAAAAAAAAA */
+/* *************************************************** */
 
 .list-inline li {
   display: inline-block;
@@ -10241,43 +10194,6 @@ select#locale {
   }
 }
 
-#smartwizard .nav li:last-child {
-  -webkit-box-flex: 0;
-  -ms-flex-positive: 0;
-  flex-grow: 0;
-}
-
-@media only screen and (min-width: 0px) and (max-width: 640px) {
-  #smartwizard .nav li:last-child {
-    margin-top: 10px;
-  }
-}
-
-#smartwizard .nav li:last-child a {
-  margin-left: 20px;
-  margin-right: 20px;
-  width: 80px;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding: 0;
-  border: 1px solid #DBF7E8;
-  background: #fff;
-}
-
-#smartwizard .nav li:last-child a:before, #smartwizard .nav li:last-child a:after {
-  display: none;
-}
-
-#smartwizard .nav li:last-child a i {
-  font-size: 50px;
-}
 
 #smartwizard .card-body {
   padding-bottom: 0;
@@ -10356,13 +10272,6 @@ select#locale {
 
 #smartwizard2 .nav {
   margin-bottom: 30px;
-}
-
-#smartwizard2 .nav li:last-child {
-  -webkit-box-flex: 0;
-  -ms-flex-positive: 0;
-  flex-grow: 0;
-  overflow: hidden;
 }
 
 #example-vertical > .steps {

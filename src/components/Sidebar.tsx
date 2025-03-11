@@ -57,7 +57,7 @@ const Sidebar = () => {
               {isOpen === 1 && (
                 <ul className="geex-sidebar__submenu">
                   <li className="geex-sidebar__menu__link">
-                    <a href="/server-management">Server Management</a>
+                    <a href="/instrumento">Instrumento</a>
                   </li>
                   <li className="geex-sidebar__menu__link">
                     <a href="/banking">Banking</a>

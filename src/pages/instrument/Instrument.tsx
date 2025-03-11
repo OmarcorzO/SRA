@@ -1,5 +1,6 @@
 import React from "react";
 import FullLayout from "../../Layouts/FullLayout";
+import './instrument.scss'
 
 const initialAnswers = {
   ingresos_economicos: "-1",
@@ -143,8 +144,9 @@ const Instrument = () => {
   return (
     <FullLayout>
       <form onSubmit={handleSubmit}>
-        <div style={{ display: "flex"}}>
-          <h3 className="font-20 mt-30 mx-4">Cuestionario Sociodemográfico</h3>
+        <div>
+          <h2 className="semi-bold rw-font">Cuestionario Sociodemográfico</h2>
+          <h6 className="rw-font">Este cuestionario tiene como objetivo bla bla bla</h6>
           <a style={{ color: "white" }} className="btn mx-3 mt-3" onClick={handleBack}>
             Previous
           </a>
@@ -152,66 +154,61 @@ const Instrument = () => {
             Next
           </a>
         </div>
-        <div id="smartwizard" className="custom-wizard">
+        <div id="smartwizard"  className="marco">
           <ul className="nav">
             <li>
               <a
                 type="button"
-                className={`nav-link ${step === 1 ? "active" : "inactive"}`}
+                className={`nav-link ${step === 1 ? "shadow" : "inactive"}`}
                 onClick={() => setStep(1)}
               >
                 Socioeconómico
               </a>
-              {/* <div className="arrow" /> */}
             </li>
             <li>
               <a
                 type="button"
-                className={`nav-link ${step === 2 ? "active" : "inactive"}`}
+                className={`nav-link ${step === 2 ? "shadow" : "inactive"}`}
                 onClick={() => setStep(2)}
               >
                 Familiar
               </a>
-              {/* <div className="arrow" /> */}
             </li>
             <li>
               <a
                 type="button"
-                className={`nav-link ${step === 3 ? "active" : "inactive"}`}
+                className={`nav-link ${step === 3 ? "shadow" : "inactive"}`}
                 onClick={() => setStep(3)}
               >
                 Personal
               </a>
-              {/* <div className="arrow" /> */}
             </li>
             <li>
               <a
                 type="button"
-                className={`nav-link ${step === 4 ? "active" : "inactive"}`}
+                className={`nav-link ${step === 4 ? "shadow" : "inactive"}`}
                 onClick={() => setStep(4)}
               >
                 Académico
               </a>
-              {/* <div className="arrow" /> */}
             </li>
             <li>
               <a
                 type="button"
-                className={`nav-link ${step === 5 ? "active" : "inactive"}`}
+                className={`nav-link ${step === 5 ? "shadow" : ""}`}
                 onClick={() => setStep(5)}
               >
                 Institucional
               </a>
-              {/* <div className="arrow" /> */}
             </li>
-            <li>
+            {/* <li>
               <a
                 type="button"
                 className={`nav-link icon ${step === 6 ? "active" : "inactive"}`}
               >
                 <i className="icofont-check-alt"></i>
               </a>
-            </li>
+            </li> */}
           </ul>
 
           <div className="tab-content">
@@ -220,7 +217,6 @@ const Instrument = () => {
                 {/* Socioeconómico */}
                 <section>
                   <div className="card-body pt-0">
-                    <h4 className="font-20 mb-20">Socioeconómico</h4>
                     <div className="row">
                       <div className="col-lg-6">
                         <div className="form-group">

@@ -1,0 +1,66 @@
+:root {
+	--gradient-shadow: linear-gradient(
+		10deg,
+		#FE753F,
+		#9980FF
+	);
+}
+
+.shadow {
+	font-weight: bold;
+	position: relative;
+	text-align: center;
+}
+.shadow:before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: 30px;
+	padding: 1px;
+	background: linear-gradient(
+		102.68deg,
+		var(--primary-color) 45.37%,
+		var(--lila) 121.19%
+	  )
+	  border-box;
+	mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+	mask-composite: exclude;
+}
+
+@keyframes animate {
+	0% {
+		background-position: 0 0;
+	}
+	50% {
+		background-position: 300% 0;
+	}
+	100% {
+		background-position: 0 0;
+	}
+}
+
+// ---------------------------
+.marco {
+	padding: 30px;
+	background-color: white;
+	li {
+		padding-right: 50px;
+	}
+
+	.nav-link {
+		
+		width: 200px;
+		height: 100px !important;
+		border-radius: 25px;
+		justify-content: center;
+		align-items: center;
+		background-color: var(--pressing);
+		border-radius: 30px !important;
+		color: black !important;
+	}
+
+	section {
+		margin-top: 42px;
+	}
+}
+

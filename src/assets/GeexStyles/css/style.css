@@ -800,7 +800,7 @@ Sidebar
   --body-color: #112130;
   --desc-color: #3B3741;
   --sec-color: #2C3A43;
-  --gray-color: #ECEAF3;
+  --gray-color: #75817D;
   --grayTwo-color: #D0D6DE;
   --grayThree-color: #B9BBBD;
   --section-color: #F3F2F7;
@@ -822,6 +822,10 @@ Sidebar
   --info-color-transparent: #58CDFF26;
   --danger-color-transparent: #FF5B5B26;
   --raleway: 'Raleway';
+  --dm-sans: 'DM Sans';
+  --pressing: #F6F5FA;
+  --navy: #3B4B59;
+  --lila: #9980FF;
 }
 
 /*---------------------------------------
@@ -848,43 +852,46 @@ Sidebar
   }
 }
 
+.rw-font {
+  font-family: var(--raleway);
+}
+
 h1,
 h2,
 h3,
 h4,
-h5,
-h6 {
-  font-family: var(--raleway);
-  font-weight: 500;
+h5 {
+  font-family: var(--dm-sans);
   color: var(--body-color);
   margin-bottom: 0;
 }
 
 h1 {
-  font-size: 32px;
+  font-size: 47.8px;
   font-weight: 600;
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 39.8px;
 }
 
 h3 {
-  font-size: 21px;
+  font-size: 33.2px;
 }
 
 h4 {
-  font-size: 18px;
+  font-size: 27.6px;
 }
 
 h5 {
-  font-size: 15px;
+  font-size: 23px;
   line-height: 24px;
 }
 
 h6 {
-  font-size: 14px;
-  line-height: 23px;
+  font-size: 19.2px;
+  color: var(--gray-color);
+  font-weight: 200;
 }
 
 p {
@@ -911,7 +918,7 @@ img {
   font-weight: 700;
 }
 
-.semii-bold {
+.semi-bold {
   font-weight: 600;
 }
 
@@ -957,7 +964,7 @@ li {
 }
 
 body {
-  font-family: var(--raleway);
+  font-family: var(--dm-sans);
   background-color: var(--section-color);
 }
 

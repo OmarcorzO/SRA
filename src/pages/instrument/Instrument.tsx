@@ -1,6 +1,7 @@
 import React from "react";
 import FullLayout from "../../Layouts/FullLayout";
-import './instrument.scss'
+import "./instrument.scss";
+import footer from "./img/SRA_Advertising.png";
 
 const initialAnswers = {
   ingresos_economicos: "-1",
@@ -98,7 +99,7 @@ const Instrument = () => {
     e.preventDefault();
     setFormSubmitted(true);
     if (isFormValid()) {
-      setStep(6)
+      setStep(6);
       const totalSum = Object.values(answers).reduce(
         (sum, value) => sum + (parseInt(value) || 0),
         0
@@ -144,17 +145,13 @@ const Instrument = () => {
   return (
     <FullLayout>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="pl-4">
           <h2 className="semi-bold rw-font">Cuestionario Sociodemográfico</h2>
-          <h6 className="rw-font">Este cuestionario tiene como objetivo bla bla bla</h6>
-          <a style={{ color: "white" }} className="btn mx-3 mt-3" onClick={handleBack}>
-            Previous
-          </a>
-          <a style={{ color: "white" }} className="btn mx-3 mt-3" onClick={handleNext}>
-            Next
-          </a>
+          <h6 className="rw-font">
+            Este cuestionario tiene como objetivo bla bla bla
+          </h6>
         </div>
-        <div id="smartwizard"  className="marco">
+        <div id="smartwizard" className="marco">
           <ul className="nav">
             <li>
               <a
@@ -798,7 +795,24 @@ const Instrument = () => {
                 </section>
               </div>
             )}
+            <a
+              style={{ color: "white" }}
+              className="btn mx-3 mt-3"
+              onClick={handleBack}
+            >
+              Previous
+            </a>
+            <a
+              style={{ color: "white" }}
+              className="btn mx-3 mt-3"
+              onClick={handleNext}
+            >
+              Next
+            </a>
           </div>
+        </div>
+        <div>
+          <img src={footer} alt="" />
         </div>
       </form>
     </FullLayout>

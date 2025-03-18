@@ -1,9 +1,7 @@
 :root {
-	--gradient-shadow: linear-gradient(
-		10deg,
-		#FE753F,
-		#9980FF
-	);
+	--gradient-shadow: linear-gradient(10deg,
+			#FE753F,
+			#9980FF);
 }
 
 .shadow {
@@ -11,18 +9,16 @@
 	position: relative;
 	text-align: center;
 }
+
 .shadow:before {
 	content: "";
 	position: absolute;
 	inset: 0;
 	border-radius: 30px;
 	padding: 1px;
-	background: linear-gradient(
-		102.68deg,
-		var(--primary-color) 45.37%,
-		var(--lila) 121.19%
-	  )
-	  border-box;
+	background: linear-gradient(102.68deg,
+			var(--primary-color) 45.37%,
+			var(--lila) 121.19%) border-box;
 	mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
 	mask-composite: exclude;
 }
@@ -31,9 +27,11 @@
 	0% {
 		background-position: 0 0;
 	}
+
 	50% {
 		background-position: 300% 0;
 	}
+
 	100% {
 		background-position: 0 0;
 	}
@@ -46,6 +44,7 @@
 	border-radius: 40px;
 	max-width: 95.5%;
 	background-color: white;
+
 	li {
 		padding-right: 50px;
 	}
@@ -66,3 +65,24 @@
 	}
 }
 
+.numeric-li {
+	padding: 0;
+	counter-reset: item;
+
+	li {
+		list-style: decimal;
+		display: flex;
+  align-items: flex-start;
+  counter-increment: item;
+	}
+	li::before {
+		content: counter(item) ". ";
+		
+		margin-right: 10px;
+		margin-top: 3px;
+	  }
+
+	label {
+		font-size: 16px;
+	}
+}

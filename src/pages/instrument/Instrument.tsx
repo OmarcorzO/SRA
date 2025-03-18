@@ -214,38 +214,62 @@ const Instrument = () => {
                 {/* Socioeconómico */}
                 <section>
                   <div className="card-body pt-0">
-                    <div className="row">
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <label className="font-14 bold mb-2">
-                            ¿Tiene una forma de ingresos económicos actualmente?
-                          </label>
-                          <select
-                            name="ingresos_economicos"
-                            className="form-control"
-                            value={answers.ingresos_economicos}
-                            onChange={handleChange}
-                          >
-                            <option value="-1">---Seleccione---</option>
-                            <option value="13">Empleado directo</option>
-                            <option value="10">Contratista o informal</option>
-                            <option value="7">Emprendedor</option>
-                            <option value="5">Sin ingresos economicos</option>
-                          </select>
-                          {MessageError(errors.ingresos_economicos)}
-                        </div>
-                        {answers.ingresos_economicos !== "5" && (
+                    <ol className="numeric-li row row-cols-3">
+                      <div className="col">
+                        <li>
                           <div className="form-group">
-                            <label className="font-14 bold mb-2">
-                              ¿Cuál es el rango de ingresos mensuales de su
-                              actividad economica?
+                            <label>
+                              ¿Tiene una fuente de ingresos actualmente?
                             </label>
                             <select
-                              name="rango_ingresos_mensuales"
+                              name="ingresos_economicos"
                               className="form-control"
-                              value={answers.rango_ingresos_mensuales}
+                              value={answers.ingresos_economicos}
                               onChange={handleChange}
-                              disabled={answers.ingresos_economicos === "-1"}
+                            >
+                              <option value="-1">---Seleccione---</option>
+                              <option value="13">Empleado directo</option>
+                              <option value="10">Contratista o informal</option>
+                              <option value="7">Emprendedor</option>
+                              <option value="5">Sin ingresos economicos</option>
+                            </select>
+                            {MessageError(errors.ingresos_economicos)}
+                          </div>
+                        </li>
+                        <li>
+                          {answers.ingresos_economicos !== "5" && (
+                            <div className="form-group">
+                              <label>
+                                ¿Cuál es el rango de ingresos mensuales de su
+                                actividad economica?
+                              </label>
+                              <select
+                                name="rango_ingresos_mensuales"
+                                className="form-control"
+                                value={answers.rango_ingresos_mensuales}
+                                onChange={handleChange}
+                                disabled={answers.ingresos_economicos === "-1"}
+                              >
+                                <option value="-1">---Seleccione---</option>
+                                <option value="5">Menos de 1 SMMLV</option>
+                                <option value="7">Entre 1 y 2 SMMLV</option>
+                                <option value="10">Entre 2 y 4 SMMLV</option>
+                                <option value="13">Más de 4 SMMLV</option>
+                              </select>
+                              {MessageError(errors.rango_ingresos_mensuales)}
+                            </div>
+                          )}
+                        </li>
+                        <li>
+                          <div className="form-group">
+                            <label>
+                              ¿Cuál es el rango de ingresos mensuales del hogar?
+                            </label>
+                            <select
+                              name="rango_ingresos_hogar"
+                              className="form-control"
+                              value={answers.rango_ingresos_hogar}
+                              onChange={handleChange}
                             >
                               <option value="-1">---Seleccione---</option>
                               <option value="5">Menos de 1 SMMLV</option>
@@ -253,101 +277,94 @@ const Instrument = () => {
                               <option value="10">Entre 2 y 4 SMMLV</option>
                               <option value="13">Más de 4 SMMLV</option>
                             </select>
-                            {MessageError(errors.rango_ingresos_mensuales)}
+                            {MessageError(errors.rango_ingresos_hogar)}
                           </div>
-                        )}
-                        <div className="form-group">
-                          <label className="font-14 bold mb-2">
-                            ¿Cuál es el rango de ingresos mensuales del hogar?
-                          </label>
-                          <select
-                            name="rango_ingresos_hogar"
-                            className="form-control"
-                            value={answers.rango_ingresos_hogar}
-                            onChange={handleChange}
-                          >
-                            <option value="-1">---Seleccione---</option>
-                            <option value="5">Menos de 1 SMMLV</option>
-                            <option value="7">Entre 1 y 2 SMMLV</option>
-                            <option value="10">Entre 2 y 4 SMMLV</option>
-                            <option value="13">Más de 4 SMMLV</option>
-                          </select>
-                          {MessageError(errors.rango_ingresos_hogar)}
-                        </div>
-                        <div className="form-group">
-                          <label className="font-14 bold mb-2">
-                            ¿Cuenta con un dispositivo electronico para
-                            estudiar?
-                          </label>
-                          <select
-                            name="dispositivo_electronico"
-                            className="form-control"
-                            value={answers.dispositivo_electronico}
-                            onChange={handleChange}
-                          >
-                            <option value="-1">---Seleccione---</option>
-                            <option value="si">Sí</option>
-                            <option value="no">No</option>
-                          </select>
-                          {MessageError(errors.dispositivo_electronico)}
-                        </div>
+                        </li>
                       </div>
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <label className="font-14 bold mb-2">
-                            ¿Cuál es la fuente principal de ingresos con mayor
-                            cuantia en su hogar?
-                          </label>
-                          <select
-                            name="fuente_ingresos_hogar"
-                            className="form-control"
-                            value={answers.fuente_ingresos_hogar}
-                            onChange={handleChange}
-                          >
-                            <option value="-1">---Seleccione---</option>
-                            <option value="13">Trabajo formal</option>
-                            <option value="10">Trabajo informal</option>
-                            <option value="7">Apoyo familiar</option>
-                            <option value="5">Otros</option>
-                          </select>
-                          {MessageError(errors.fuente_ingresos_hogar)}
-                        </div>
-                        <div className="form-group">
-                          <label className="font-14 bold mb-2">
-                            ¿Cuántas personas dependen económicamente de usted?
-                          </label>
-                          <select
-                            name="personas_dependen"
-                            className="form-control"
-                            value={answers.personas_dependen}
-                            onChange={handleChange}
-                          >
-                            <option value="-1">---Seleccione---</option>
-                            <option value="13">Ninguna</option>
-                            <option value="10">1-2</option>
-                            <option value="7">3-5</option>
-                            <option value="5">Más de 5</option>
-                          </select>
-                          {MessageError(errors.personas_dependen)}
-                        </div>
-                        <div className="form-group">
-                          <label className="font-14 bold mb-2">
-                            ¿Posee acceso a internet en su hogar?
-                          </label>
-                          <select
-                            name="acceso_internet"
-                            className="form-control"
-                            value={answers.acceso_internet}
-                            onChange={handleChange}
-                          >
-                            <option value="-1">---Seleccione---</option>
-                            <option value="13">Sí</option>
-                            <option value="5">No</option>
-                          </select>
-                          {MessageError(errors.acceso_internet)}
-                        </div>
+                      <div className="col">
+                        <li>
+                          <div className="form-group">
+                            <label>
+                              ¿Cuál es la fuente principal de ingresos con mayor
+                              cuantia en su hogar?
+                            </label>
+                            <select
+                              name="fuente_ingresos_hogar"
+                              className="form-control"
+                              value={answers.fuente_ingresos_hogar}
+                              onChange={handleChange}
+                            >
+                              <option value="-1">---Seleccione---</option>
+                              <option value="13">Trabajo formal</option>
+                              <option value="10">Trabajo informal</option>
+                              <option value="7">Apoyo familiar</option>
+                              <option value="5">Otros</option>
+                            </select>
+                            {MessageError(errors.fuente_ingresos_hogar)}
+                          </div>
+                        </li>
+                        <li>
+                          <div className="form-group">
+                            <label>
+                              ¿Cuántas personas dependen económicamente de
+                              usted?
+                            </label>
+                            <select
+                              name="personas_dependen"
+                              className="form-control"
+                              value={answers.personas_dependen}
+                              onChange={handleChange}
+                            >
+                              <option value="-1">---Seleccione---</option>
+                              <option value="13">Ninguna</option>
+                              <option value="10">1-2</option>
+                              <option value="7">3-5</option>
+                              <option value="5">Más de 5</option>
+                            </select>
+                            {MessageError(errors.personas_dependen)}
+                          </div>
+                        </li>
+                        <li>
+                          <div className="form-group">
+                            <label>
+                              ¿Posee acceso a internet en su hogar?
+                            </label>
+                            <select
+                              name="acceso_internet"
+                              className="form-control"
+                              value={answers.acceso_internet}
+                              onChange={handleChange}
+                            >
+                              <option value="-1">---Seleccione---</option>
+                              <option value="13">Sí</option>
+                              <option value="5">No</option>
+                            </select>
+                            {MessageError(errors.acceso_internet)}
+                          </div>
+                        </li>
                       </div>
-                    </div>
+                      <div className="col">
+                        <li>
+                          <div className="form-group">
+                            <label>
+                              ¿Cuenta con un dispositivo electronico para
+                              estudiar?
+                            </label>
+                            <select
+                              name="dispositivo_electronico"
+                              className="form-control"
+                              value={answers.dispositivo_electronico}
+                              onChange={handleChange}
+                            >
+                              <option value="-1">---Seleccione---</option>
+                              <option value="si">Sí</option>
+                              <option value="no">No</option>
+                            </select>
+                            {MessageError(errors.dispositivo_electronico)}
+                          </div>
+                        </li>
+                      </div>
+                    </ol>
                   </div>
                 </section>
               </div>
@@ -361,7 +378,7 @@ const Instrument = () => {
                     <div className="row">
                       <div className="col-lg-6">
                         <div className="form-group">
-                          <label className="font-14 bold mb-2">
+                          <label>
                             ¿Con quién vive actualmente?
                           </label>
                           <select
@@ -381,7 +398,7 @@ const Instrument = () => {
                           {MessageError(errors.vive_con)}
                         </div>
                         <div className="form-group">
-                          <label className="font-14 bold mb-2">
+                          <label>
                             ¿Cuál es el nivel educativo más alto alcanzado por
                             su padre?
                           </label>
@@ -402,7 +419,7 @@ const Instrument = () => {
                           {MessageError(errors.nivel_educativo_padre)}
                         </div>
                         <div className="form-group">
-                          <label className="font-14 bold mb-2">
+                          <label>
                             ¿Cuál es el nivel educativo más alto alcanzado por
                             su madre?
                           </label>
@@ -425,7 +442,7 @@ const Instrument = () => {
                       </div>
                       <div className="col-lg-6">
                         <div className="form-group">
-                          <label className="font-14 bold mb-2">
+                          <label>
                             ¿Tiene hijos a su cargo?
                           </label>
                           <select
@@ -441,7 +458,7 @@ const Instrument = () => {
                           {MessageError(errors.tiene_hijos)}
                         </div>
                         <div className="form-group">
-                          <label className="font-14 bold mb-2">
+                          <label>
                             ¿Cómo describe la relación con su familia?
                           </label>
                           <select
@@ -459,7 +476,7 @@ const Instrument = () => {
                           {MessageError(errors.relacion_familiar)}
                         </div>
                         <div className="form-group">
-                          <label className="font-14 bold mb-2">
+                          <label>
                             ¿Alguien en su familia le apoya emocionalmente en
                             sus estudios?
                           </label>
@@ -490,7 +507,7 @@ const Instrument = () => {
                     <div className="row">
                       <div className="col-lg-6">
                         <div className="form-group">
-                          <label className="font-14 bold mb-2">
+                          <label>
                             ¿Cuál es su rango de edad?
                           </label>
                           <select
@@ -508,7 +525,7 @@ const Instrument = () => {
                           {MessageError(errors.rango_edad)}
                         </div>
                         <div className="form-group">
-                          <label className="font-14 bold mb-2">
+                          <label>
                             ¿Cuál es su estado civil?
                           </label>
                           <select
@@ -528,7 +545,7 @@ const Instrument = () => {
                           {MessageError(errors.estado_civil)}
                         </div>
                         <div className="form-group">
-                          <label className="font-14 bold mb-2">
+                          <label>
                             ¿Tiene alguna condición de salud especial o
                             discapacidad?
                           </label>
@@ -547,7 +564,7 @@ const Instrument = () => {
                       </div>
                       <div className="col-lg-6">
                         <div className="form-group">
-                          <label className="font-14 bold mb-2">
+                          <label>
                             ¿Cuál es su lugar de residencia?
                           </label>
                           <select
@@ -563,7 +580,7 @@ const Instrument = () => {
                           {MessageError(errors.lugar_residencia)}
                         </div>
                         <div className="form-group">
-                          <label className="font-14 bold mb-2">
+                          <label>
                             ¿Qué medio de transporte utiliza con mayor
                             frecuencia para llegar a la universidad?
                           </label>
@@ -596,7 +613,7 @@ const Instrument = () => {
                     <div className="row">
                       <div className="col-lg-6">
                         <div className="form-group">
-                          <label className="font-14 bold mb-2">
+                          <label>
                             ¿La carrera que estaba estudiando era de su interés
                             personal?
                           </label>

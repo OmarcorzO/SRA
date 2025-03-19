@@ -45,10 +45,42 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 0 22px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  padding-top: 10px;
+  padding-inline-end: 80px;
+  padding-inline-start: 400px;
+}
+
+@media only screen and (max-width: 1920px) {
+  .geex-header__wrapper {
+    gap: 50px;
+    -webkit-padding-start: 400px;
+            padding-inline-start: 400px;
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  .geex-header__wrapper {
+    gap: 40px;
+    -webkit-padding-start: 395px;
+            padding-inline-start: 395px;
+  }
+}
+
+@media only screen and (max-width: 1440px) {
+  .geex-header__wrapper {
+    -webkit-padding-start: 340px;
+            padding-inline-start: 340px;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .geex-header__wrapper {
+    -webkit-padding-start: 350px;
+            padding-inline-start: 365px;
+  }
+  * {
+    font-size: small;
+  }
 }
 
 .geex-header__logo-wrapper {
@@ -823,9 +855,11 @@ Sidebar
   --danger-color-transparent: #FF5B5B26;
   --raleway: 'Raleway';
   --dm-sans: 'DM Sans';
+  --notpressing: rgba(58, 77, 84, 0.30);
   --pressing: #F6F5FA;
   --navy: #3B4B59;
   --lila: #9980FF;
+  --black: #000;
 }
 
 /*---------------------------------------

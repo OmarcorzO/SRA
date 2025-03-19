@@ -1,13 +1,14 @@
 :root {
-	--gradient-shadow: linear-gradient(10deg,
-			#FE753F,
-			#9980FF);
+	--gradient-shadow: linear-gradient(120deg,
+			#FE753F 62%,
+			#9980FF 75%);
 }
 
 .shadow {
 	font-weight: bold;
 	position: relative;
 	text-align: center;
+	color: var(--black) !important;
 }
 
 .shadow:before {
@@ -16,25 +17,9 @@
 	inset: 0;
 	border-radius: 30px;
 	padding: 1px;
-	background: linear-gradient(102.68deg,
-			var(--primary-color) 45.37%,
-			var(--lila) 121.19%) border-box;
+	background: var(--gradient-shadow);
 	mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
 	mask-composite: exclude;
-}
-
-@keyframes animate {
-	0% {
-		background-position: 0 0;
-	}
-
-	50% {
-		background-position: 300% 0;
-	}
-
-	100% {
-		background-position: 0 0;
-	}
 }
 
 // ---------------------------
@@ -45,8 +30,8 @@
 	max-width: 95.5%;
 	background-color: white;
 
-	li {
-		padding-right: 50px;
+	.nav {
+		justify-content: space-between
 	}
 
 	.nav-link {
@@ -57,7 +42,7 @@
 		align-items: center;
 		background-color: var(--pressing);
 		border-radius: 30px !important;
-		color: black !important;
+		color: var(--notpressing);
 	}
 
 	section {
@@ -69,20 +54,94 @@
 	padding: 0;
 	counter-reset: item;
 
+	.form-group {
+		margin-left: 25px;
+	}
+
 	li {
 		list-style: decimal;
-		display: flex;
-  align-items: flex-start;
-  counter-increment: item;
+		display: block;
+		counter-increment: item;
+		margin-right: 50px;
 	}
+
 	li::before {
-		content: counter(item) ". ";
-		
-		margin-right: 10px;
-		margin-top: 3px;
-	  }
+		content: counter(item) ".";
+		position: absolute;
+		margin-top: 1px;
+	}
 
 	label {
 		font-size: 16px;
 	}
+}
+
+// ******* SELECT BONITO ********
+.custom-select-inst-wrapper {
+	position: relative;
+}
+
+.custom-select-inst {
+	appearance: none;
+	height: 46px;
+	font-size: 13px;
+	cursor: pointer;
+	z-index: 1;
+
+	// Style
+	border-radius: 10px;
+	border: 2px solid rgba(204, 204, 204, 0.60);
+	background: var(--Color-Bg-default, #FFF);
+
+	// Arrow
+	background-image: url(./img/ArrowDownSel.svg);
+	background-repeat: no-repeat;
+	background-position: right 15px center;
+}
+
+/* 🎨 Pseudo-elemento para el borde degradado */
+.custom-select-inst-wrapper::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-radius: 8px;
+	/* Mantiene el radio */
+	padding: 2px;
+	/* Grosor del borde */
+	background: var(--gradient-shadow);
+	mask:
+		linear-gradient(#fff 0 0) content-box,
+		linear-gradient(#fff 0 0);
+	mask-composite: exclude;
+	/* Importante */
+	pointer-events: none;
+	/* Importante */
+	z-index: 0;
+
+	opacity: 0;
+	/* 🔹 Inicialmente invisible */
+	transition: opacity 0.3s ease;
+}
+
+/* 🎨 Activa el gradiente en hover y focus */
+.custom-select-inst-wrapper:hover::after,
+.custom-select-inst-wrapper:focus-within::after {
+	opacity: 1;
+	/* 🔥 Aparece solo en hover/focus */
+}
+
+.custom-select-inst:hover {
+	background: var(--pressing);
+	background-image: url(./img/ArrowDownSel.svg);
+	background-repeat: no-repeat;
+	background-position: right 15px center;
+}
+
+/* Cambia el fondo al seleccionar */
+.custom-select-inst:focus {
+	outline: none;
+	background-image: url(./img/ArrowUpSel.svg);
 }

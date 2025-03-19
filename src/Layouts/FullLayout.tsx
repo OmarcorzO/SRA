@@ -4,11 +4,16 @@ import Sidebar from "../components/Sidebar";
 import Outlet from "../components/Outlet";
 
 import { ReactNode } from "react";
+interface FullLayoutProps {
+  children: ReactNode;
+  title?: string;
+  desc?: string;
+}
 
-const FullLayout = ({ children }: { children: ReactNode }) => {
+const FullLayout = ({ children, title = "", desc = "" }: FullLayoutProps) => {
   return (
     <div>
-      <Header />
+      <Header title={title} desc={desc}/>
       <main className="geex-main-content">
         <Sidebar />
         <Outlet>{children}</Outlet>

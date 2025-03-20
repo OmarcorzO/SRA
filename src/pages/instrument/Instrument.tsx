@@ -4,16 +4,16 @@ import "./instrument.scss";
 import footer from "./img/SRA_Advertising.png";
 
 // Icons
-import Socio from './img/icon_1.svg'
-import Family from './img/icon_2.svg'
-import Perso from './img/icon_3.svg'
-import Academy from './img/icon_4.svg'
-import Insti from './img/icon_5.svg'
-import SocioCheck from './img/icon_check_1.svg'
-import FamilyCheck from './img/icon_check_2.svg'
-import PersoCheck from './img/icon_check_3.svg'
-import AcademyCheck from './img/icon_check_4.svg'
-import InstiCheck from './img/icon_check_5.svg'
+import Socio from "./img/icon_1.svg";
+import Family from "./img/icon_2.svg";
+import Perso from "./img/icon_3.svg";
+import Academy from "./img/icon_4.svg";
+import Insti from "./img/icon_5.svg";
+import SocioCheck from "./img/icon_check_1.svg";
+import FamilyCheck from "./img/icon_check_2.svg";
+import PersoCheck from "./img/icon_check_3.svg";
+import AcademyCheck from "./img/icon_check_4.svg";
+import InstiCheck from "./img/icon_check_5.svg";
 
 const initialAnswers = {
   ingresos_economicos: "-1",
@@ -87,7 +87,7 @@ const Instrument = () => {
     // $("#smartwizard").smartWizard();
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setAnswers((prevAnswers) => ({
       ...prevAnswers,
@@ -155,7 +155,10 @@ const Instrument = () => {
   };
 
   return (
-    <FullLayout title="Cuestionario Sociodemográfico" desc="Este cuestionario tiene como objetivo bla bla bla">
+    <FullLayout
+      title="Cuestionario Sociodemográfico"
+      desc="Este cuestionario tiene como objetivo bla bla bla"
+    >
       <form onSubmit={handleSubmit}>
         <div id="smartwizard" className="marco">
           <ul className="nav">
@@ -165,7 +168,12 @@ const Instrument = () => {
                 className={`nav-link ${step === 1 ? "shadow" : "inactive"}`}
                 onClick={() => setStep(1)}
               >
-                <img src={step === 1 ? SocioCheck : Socio} alt="No Image" style={{ marginRight: '8px' }} /> Socioeconómico
+                <img
+                  src={step === 1 ? SocioCheck : Socio}
+                  alt="No Image"
+                  style={{ marginRight: "8px" }}
+                />{" "}
+                Socioeconómico
               </a>
             </li>
             <li>
@@ -174,7 +182,12 @@ const Instrument = () => {
                 className={`nav-link ${step === 2 ? "shadow" : "inactive"}`}
                 onClick={() => setStep(2)}
               >
-                <img src={step === 2 ? FamilyCheck : Family} alt="No Image" style={{ marginRight: '8px' }} /> Familiar
+                <img
+                  src={step === 2 ? FamilyCheck : Family}
+                  alt="No Image"
+                  style={{ marginRight: "8px" }}
+                />{" "}
+                Familiar
               </a>
             </li>
             <li>
@@ -183,7 +196,12 @@ const Instrument = () => {
                 className={`nav-link ${step === 3 ? "shadow" : "inactive"}`}
                 onClick={() => setStep(3)}
               >
-                <img src={step === 3 ? PersoCheck : Perso} alt="No Image" style={{ marginRight: '8px' }} /> Personal
+                <img
+                  src={step === 3 ? PersoCheck : Perso}
+                  alt="No Image"
+                  style={{ marginRight: "8px" }}
+                />{" "}
+                Personal
               </a>
             </li>
             <li>
@@ -192,7 +210,12 @@ const Instrument = () => {
                 className={`nav-link ${step === 4 ? "shadow" : "inactive"}`}
                 onClick={() => setStep(4)}
               >
-                <img src={step === 4 ? AcademyCheck : Academy} alt="No Image" style={{ marginRight: '8px' }} /> Académico
+                <img
+                  src={step === 4 ? AcademyCheck : Academy}
+                  alt="No Image"
+                  style={{ marginRight: "8px" }}
+                />{" "}
+                Académico
               </a>
             </li>
             <li>
@@ -201,7 +224,12 @@ const Instrument = () => {
                 className={`nav-link ${step === 5 ? "shadow" : ""}`}
                 onClick={() => setStep(5)}
               >
-                <img src={step === 5 ? InstiCheck : Insti} alt="No Image" style={{ marginRight: '8px' }} /> Institucional
+                <img
+                  src={step === 5 ? InstiCheck : Insti}
+                  alt="No Image"
+                  style={{ marginRight: "8px" }}
+                />{" "}
+                Institucional
               </a>
             </li>
             {/* <li>
@@ -221,7 +249,7 @@ const Instrument = () => {
                 <section>
                   <div className="card-body pt-0">
                     <ol className="numeric-li row">
-                      <div className="col">
+                      <div className="col gripy">
                         <li>
                           <div className="form-group">
                             <label>
@@ -246,8 +274,8 @@ const Instrument = () => {
                                   Sin ingresos economicos
                                 </option>
                               </select>
-                              {MessageError(errors.ingresos_economicos)}
                             </div>
+                            {MessageError(errors.ingresos_economicos)}
                           </div>
                         </li>
                         {answers.ingresos_economicos !== "5" && (
@@ -305,7 +333,7 @@ const Instrument = () => {
                           </div>
                         </li>
                       </div>
-                      <div className="col">
+                      <div className="col gripy">
                         <li>
                           <div className="form-group">
                             <label>
@@ -357,51 +385,76 @@ const Instrument = () => {
                           </div>
                         </li>
                         {answers.ingresos_economicos !== "5" && (
-                        <li>
-                          <div className="form-group">
-                            <label>¿Posee acceso a internet en su hogar?</label>
-                            <div className="custom-select-inst-wrapper">
-                              <select
-                                name="acceso_internet"
-                                className="form-control custom-select-inst"
-                                value={answers.acceso_internet}
-                                onChange={handleChange}
-                              >
-                                <option value="-1">
-                                  Selecciona una opción
-                                </option>
-                                <option value="13">Sí</option>
-                                <option value="5">No</option>
-                              </select>
+                          <li>
+                            <div className="form-group">
+                              <label>
+                                ¿Posee acceso a internet en su hogar?
+                              </label>
+                              <div className="radio-toggle">
+                                <label
+                                  className={`option ${
+                                    answers.acceso_internet === "13" ? "active" : ""
+                                  }`}
+                                >
+                                  <input
+                                    type="radio"
+                                    name="acceso_internet"
+                                    value="13"
+                                    className="radio-grad"
+                                    checked={answers.acceso_internet === "13"}
+                                    onChange={handleChange}
+                                  />
+                                  <span className="radio-indicator"></span>
+                                  Sí
+                                </label>
+
+                                <label
+                                  className={`option ${
+                                    answers.acceso_internet === "5" ? "active" : ""
+                                  }`}
+                                >
+                                  <input
+                                    type="radio"
+                                    name="acceso_internet"
+                                    value="5"
+                                    className="radio-grad"
+                                    checked={answers.acceso_internet === "5"}
+                                    onChange={handleChange}
+                                  />
+                                  <span className="radio-indicator"></span>
+                                  No
+                                </label>
+                              </div>
+                              {MessageError(errors.acceso_internet)}
                             </div>
-                            {MessageError(errors.acceso_internet)}
-                          </div>
-                        </li>
-                      )}
+                          </li>
+                        )}
                       </div>
-                      <div className="col">
-                      {answers.ingresos_economicos === "5" && (
-                        <li>
-                          <div className="form-group">
-                            <label>¿Posee acceso a internet en su hogar?</label>
-                            <div className="custom-select-inst-wrapper">
-                              <select
-                                name="acceso_internet"
-                                className="form-control custom-select-inst"
-                                value={answers.acceso_internet}
-                                onChange={handleChange}
-                              >
-                                <option value="-1">
-                                  Selecciona una opción
-                                </option>
-                                <option value="13">Sí</option>
-                                <option value="5">No</option>
-                              </select>
+                      <div className="col gripy">
+                        {answers.ingresos_economicos === "5" && (
+                          <li>
+                            <div className="form-group">
+                              <label>
+                                ¿Posee acceso a internet en su hogar?
+                              </label>
+                              <div className="custom-select-inst-wrapper">
+                                <select
+                                  name="acceso_internet"
+                                  className="form-control custom-select-inst"
+                                  value={answers.acceso_internet}
+                                  onChange={handleChange}
+                                >
+                                  <option value="-1">
+                                    Selecciona una opción
+                                  </option>
+                                  <option value="13">Sí</option>
+                                  <option value="5">No</option>
+                                </select>
+                              </div>
+                              {MessageError(errors.acceso_internet)}
                             </div>
-                            {MessageError(errors.acceso_internet)}
-                          </div>
-                        </li>
-                      )}
+                          </li>
+                        )}
                         <li>
                           <div className="form-group">
                             <label>
@@ -436,134 +489,159 @@ const Instrument = () => {
                 {/* Familiar */}
                 <section>
                   <div className="card-body pt-0">
-                    <h4 className="font-20 mb-20">Familiar</h4>
-                    <div className="row">
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <label>¿Con quién vive actualmente?</label>
-                          <div className="custom-select-inst-wrapper">
-                            <select
-                              name="vive_con"
-                              className="form-control custom-select-inst"
-                              value={answers.vive_con}
-                              onChange={handleChange}
-                            >
-                              <option value="-1">Selecciona una opción</option>
-                              <option value="13">Con mi familia</option>
-                              <option value="10">Solo/a</option>
-                              <option value="7">
-                                En residencia universitaria
-                              </option>
-                              <option value="5">Con amigos</option>
-                            </select>
+                    <ol className="numeric-li row">
+                      <div className="col gripy">
+                        <li>
+                          <div className="form-group">
+                            <label>¿Con quién vive actualmente?</label>
+                            <div className="custom-select-inst-wrapper">
+                              <select
+                                name="vive_con"
+                                className="form-control custom-select-inst"
+                                value={answers.vive_con}
+                                onChange={handleChange}
+                              >
+                                <option value="-1">
+                                  Selecciona una opción
+                                </option>
+                                <option value="13">Con mi familia</option>
+                                <option value="10">Solo/a</option>
+                                <option value="7">
+                                  En residencia universitaria
+                                </option>
+                                <option value="5">Con amigos</option>
+                              </select>
+                            </div>
+                            {MessageError(errors.vive_con)}
                           </div>
-                          {MessageError(errors.vive_con)}
-                        </div>
-                        <div className="form-group">
-                          <label>
-                            ¿Cuál es el nivel educativo más alto alcanzado por
-                            su padre?
-                          </label>
-                          <div className="custom-select-inst-wrapper">
-                            <select
-                              name="nivel_educativo_padre"
-                              className="form-control custom-select-inst"
-                              value={answers.nivel_educativo_padre}
-                              onChange={handleChange}
-                            >
-                              <option value="-1">Selecciona una opción</option>
-                              <option value="5">Primaria incompleta</option>
-                              <option value="7">Primaria completa</option>
-                              <option value="10">Secundaria</option>
-                              <option value="13">
-                                Estudios técnicos o universitarios
-                              </option>
-                            </select>
+                        </li>
+                        <li>
+                          <div className="form-group">
+                            <label>
+                              ¿Cuál es el nivel educativo más alto alcanzado por
+                              su padre?
+                            </label>
+                            <div className="custom-select-inst-wrapper">
+                              <select
+                                name="nivel_educativo_padre"
+                                className="form-control custom-select-inst"
+                                value={answers.nivel_educativo_padre}
+                                onChange={handleChange}
+                              >
+                                <option value="-1">
+                                  Selecciona una opción
+                                </option>
+                                <option value="5">Primaria incompleta</option>
+                                <option value="7">Primaria completa</option>
+                                <option value="10">Secundaria</option>
+                                <option value="13">
+                                  Estudios técnicos o universitarios
+                                </option>
+                              </select>
+                            </div>
+                            {MessageError(errors.nivel_educativo_padre)}
                           </div>
-                          {MessageError(errors.nivel_educativo_padre)}
-                        </div>
-                        <div className="form-group">
-                          <label>
-                            ¿Cuál es el nivel educativo más alto alcanzado por
-                            su madre?
-                          </label>
-                          <div className="custom-select-inst-wrapper">
-                            <select
-                              name="nivel_educativo_madre"
-                              className="form-control custom-select-inst"
-                              value={answers.nivel_educativo_madre}
-                              onChange={handleChange}
-                            >
-                              <option value="-1">Selecciona una opción</option>
-                              <option value="5">Primaria incompleta</option>
-                              <option value="7">Primaria completa</option>
-                              <option value="10">Secundaria</option>
-                              <option value="13">
-                                Estudios técnicos o universitarios
-                              </option>
-                            </select>
-                          </div>
-                          {MessageError(errors.nivel_educativo_madre)}
-                        </div>
+                        </li>
                       </div>
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <label>¿Tiene hijos a su cargo?</label>
-                          <div className="custom-select-inst-wrapper">
-                            <select
-                              name="tiene_hijos"
-                              className="form-control custom-select-inst"
-                              value={answers.tiene_hijos}
-                              onChange={handleChange}
-                            >
-                              <option value="-1">Selecciona una opción</option>
-                              <option value="5">Sí</option>
-                              <option value="13">No</option>
-                            </select>
+                      <div className="col gripy">
+                        <li>
+                          <div className="form-group">
+                            <label>
+                              ¿Cuál es el nivel educativo más alto alcanzado por
+                              su madre?
+                            </label>
+                            <div className="custom-select-inst-wrapper">
+                              <select
+                                name="nivel_educativo_madre"
+                                className="form-control custom-select-inst"
+                                value={answers.nivel_educativo_madre}
+                                onChange={handleChange}
+                              >
+                                <option value="-1">
+                                  Selecciona una opción
+                                </option>
+                                <option value="5">Primaria incompleta</option>
+                                <option value="7">Primaria completa</option>
+                                <option value="10">Secundaria</option>
+                                <option value="13">
+                                  Estudios técnicos o universitarios
+                                </option>
+                              </select>
+                            </div>
+                            {MessageError(errors.nivel_educativo_madre)}
                           </div>
-                          {MessageError(errors.tiene_hijos)}
-                        </div>
-                        <div className="form-group">
-                          <label>
-                            ¿Cómo describe la relación con su familia?
-                          </label>
-                          <div className="custom-select-inst-wrapper">
-                            <select
-                              name="relacion_familiar"
-                              className="form-control custom-select-inst"
-                              value={answers.relacion_familiar}
-                              onChange={handleChange}
-                            >
-                              <option value="-1">Selecciona una opción</option>
-                              <option value="13">Muy buena</option>
-                              <option value="10">Buena</option>
-                              <option value="7">Regular</option>
-                              <option value="5">Mala</option>
-                            </select>
+                        </li>
+                        <li>
+                          <div className="form-group">
+                            <label>¿Tiene hijos a su cargo?</label>
+                            <div className="custom-select-inst-wrapper">
+                              <select
+                                name="tiene_hijos"
+                                className="form-control custom-select-inst"
+                                value={answers.tiene_hijos}
+                                onChange={handleChange}
+                              >
+                                <option value="-1">
+                                  Selecciona una opción
+                                </option>
+                                <option value="5">Sí</option>
+                                <option value="13">No</option>
+                              </select>
+                            </div>
+                            {MessageError(errors.tiene_hijos)}
                           </div>
-                          {MessageError(errors.relacion_familiar)}
-                        </div>
-                        <div className="form-group">
-                          <label>
-                            ¿Alguien en su familia le apoya emocionalmente en
-                            sus estudios?
-                          </label>
-                          <div className="custom-select-inst-wrapper">
-                            <select
-                              name="apoyo_emocional"
-                              className="form-control custom-select-inst"
-                              value={answers.apoyo_emocional}
-                              onChange={handleChange}
-                            >
-                              <option value="-1">Selecciona una opción</option>
-                              <option value="13">Sí</option>
-                              <option value="5">No</option>
-                            </select>
-                          </div>
-                          {MessageError(errors.apoyo_emocional)}
-                        </div>
+                        </li>
                       </div>
-                    </div>
+                      <div className="col gripy">
+                        <li>
+                          <div className="form-group">
+                            <label>
+                              ¿Cómo describe la relación con su familia?
+                            </label>
+                            <div className="custom-select-inst-wrapper">
+                              <select
+                                name="relacion_familiar"
+                                className="form-control custom-select-inst"
+                                value={answers.relacion_familiar}
+                                onChange={handleChange}
+                              >
+                                <option value="-1">
+                                  Selecciona una opción
+                                </option>
+                                <option value="13">Muy buena</option>
+                                <option value="10">Buena</option>
+                                <option value="7">Regular</option>
+                                <option value="5">Mala</option>
+                              </select>
+                            </div>
+                            {MessageError(errors.relacion_familiar)}
+                          </div>
+                        </li>
+                        <li>
+                          <div className="form-group">
+                            <label>
+                              ¿Alguien en su familia le apoya emocionalmente en
+                              sus estudios?
+                            </label>
+                            <div className="custom-select-inst-wrapper">
+                              <select
+                                name="apoyo_emocional"
+                                className="form-control custom-select-inst"
+                                value={answers.apoyo_emocional}
+                                onChange={handleChange}
+                              >
+                                <option value="-1">
+                                  Selecciona una opción
+                                </option>
+                                <option value="13">Sí</option>
+                                <option value="5">No</option>
+                              </select>
+                            </div>
+                            {MessageError(errors.apoyo_emocional)}
+                          </div>
+                        </li>
+                      </div>
+                    </ol>
                   </div>
                 </section>
               </div>
@@ -573,107 +651,128 @@ const Instrument = () => {
                 {/* Personal */}
                 <section>
                   <div className="card-body pt-0">
-                    <h4 className="font-20 mb-20">Personal</h4>
-                    <div className="row">
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <label>¿Cuál es su rango de edad?</label>
-                          <div className="custom-select-inst-wrapper">
-                            <select
-                              name="rango_edad"
-                              className="form-control custom-select-inst"
-                              value={answers.rango_edad}
-                              onChange={handleChange}
-                            >
-                              <option value="-1">Selecciona una opción</option>
-                              <option value="13">Menos de 20 años</option>
-                              <option value="10">20-25 años</option>
-                              <option value="7">26-30 años</option>
-                              <option value="5">Más de 30 años</option>
-                            </select>
+                    <ol className="numeric-li row">
+                      <div className="col gripy">
+                        <li>
+                          <div className="form-group">
+                            <label>¿Cuál es su rango de edad?</label>
+                            <div className="custom-select-inst-wrapper">
+                              <select
+                                name="rango_edad"
+                                className="form-control custom-select-inst"
+                                value={answers.rango_edad}
+                                onChange={handleChange}
+                              >
+                                <option value="-1">
+                                  Selecciona una opción
+                                </option>
+                                <option value="13">Menos de 20 años</option>
+                                <option value="10">20-25 años</option>
+                                <option value="7">26-30 años</option>
+                                <option value="5">Más de 30 años</option>
+                              </select>
+                            </div>
+                            {MessageError(errors.rango_edad)}
                           </div>
-                          {MessageError(errors.rango_edad)}
-                        </div>
-                        <div className="form-group">
-                          <label>¿Cuál es su estado civil?</label>
-                          <div className="custom-select-inst-wrapper">
-                            <select
-                              name="estado_civil"
-                              className="form-control custom-select-inst"
-                              value={answers.estado_civil}
-                              onChange={handleChange}
-                            >
-                              <option value="-1">Selecciona una opción</option>
-                              <option value="13">Soltero/a</option>
-                              <option value="10">
-                                Casado/a o en unión libre
-                              </option>
-                              <option value="7">Divorciado/a</option>
-                              <option value="5">Viudo/a</option>
-                            </select>
+                        </li>
+                        <li>
+                          <div className="form-group">
+                            <label>¿Cuál es su estado civil?</label>
+                            <div className="custom-select-inst-wrapper">
+                              <select
+                                name="estado_civil"
+                                className="form-control custom-select-inst"
+                                value={answers.estado_civil}
+                                onChange={handleChange}
+                              >
+                                <option value="-1">
+                                  Selecciona una opción
+                                </option>
+                                <option value="13">Soltero/a</option>
+                                <option value="10">
+                                  Casado/a o en unión libre
+                                </option>
+                                <option value="7">Divorciado/a</option>
+                                <option value="5">Viudo/a</option>
+                              </select>
+                            </div>
+                            {MessageError(errors.estado_civil)}
                           </div>
-                          {MessageError(errors.estado_civil)}
-                        </div>
-                        <div className="form-group">
-                          <label>
-                            ¿Tiene alguna condición de salud especial o
-                            discapacidad?
-                          </label>
-                          <div className="custom-select-inst-wrapper">
-                            <select
-                              name="condicion_salud"
-                              className="form-control custom-select-inst"
-                              value={answers.condicion_salud}
-                              onChange={handleChange}
-                            >
-                              <option value="-1">Selecciona una opción</option>
-                              <option value="5">Sí</option>
-                              <option value="13">No</option>
-                            </select>
-                          </div>
-                          {MessageError(errors.condicion_salud)}
-                        </div>
+                        </li>
                       </div>
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <label>¿Cuál es su lugar de residencia?</label>
-                          <div className="custom-select-inst-wrapper">
-                            <select
-                              name="lugar_residencia"
-                              className="form-control custom-select-inst"
-                              value={answers.lugar_residencia}
-                              onChange={handleChange}
-                            >
-                              <option value="-1">Selecciona una opción</option>
-                              <option value="13">Zona urbana</option>
-                              <option value="5">Zona rural</option>
-                            </select>
+                      <div className="col gripy">
+                        <li>
+                          <div className="form-group">
+                            <label>
+                              ¿Tiene alguna condición de salud especial o
+                              discapacidad?
+                            </label>
+                            <div className="custom-select-inst-wrapper">
+                              <select
+                                name="condicion_salud"
+                                className="form-control custom-select-inst"
+                                value={answers.condicion_salud}
+                                onChange={handleChange}
+                              >
+                                <option value="-1">
+                                  Selecciona una opción
+                                </option>
+                                <option value="5">Sí</option>
+                                <option value="13">No</option>
+                              </select>
+                            </div>
+                            {MessageError(errors.condicion_salud)}
                           </div>
-                          {MessageError(errors.lugar_residencia)}
-                        </div>
-                        <div className="form-group">
-                          <label>
-                            ¿Qué medio de transporte utiliza con mayor
-                            frecuencia para llegar a la universidad?
-                          </label>
-                          <div className="custom-select-inst-wrapper">
-                            <select
-                              name="medio_transporte"
-                              className="form-control custom-select-inst"
-                              value={answers.medio_transporte}
-                              onChange={handleChange}
-                            >
-                              <option value="-1">Selecciona una opción</option>
-                              <option value="13">Transporte público</option>
-                              <option value="10">Vehículo propio</option>
-                              <option value="7">Bicicleta</option>
-                              <option value="5">Caminando</option>
-                            </select>
+                        </li>
+                        <li>
+                          <div className="form-group">
+                            <label>¿Cuál es su lugar de residencia?</label>
+                            <div className="custom-select-inst-wrapper">
+                              <select
+                                name="lugar_residencia"
+                                className="form-control custom-select-inst"
+                                value={answers.lugar_residencia}
+                                onChange={handleChange}
+                              >
+                                <option value="-1">
+                                  Selecciona una opción
+                                </option>
+                                <option value="13">Zona urbana</option>
+                                <option value="5">Zona rural</option>
+                              </select>
+                            </div>
+                            {MessageError(errors.lugar_residencia)}
                           </div>
-                          {MessageError(errors.medio_transporte)}
-                        </div>
+                        </li>
                       </div>
-                    </div>
+                      <div className="col gripy">
+                        <li>
+                          <div className="form-group">
+                            <label>
+                              ¿Qué medio de transporte utiliza con mayor
+                              frecuencia para llegar a la universidad?
+                            </label>
+                            <div className="custom-select-inst-wrapper">
+                              <select
+                                name="medio_transporte"
+                                className="form-control custom-select-inst"
+                                value={answers.medio_transporte}
+                                onChange={handleChange}
+                              >
+                                <option value="-1">
+                                  Selecciona una opción
+                                </option>
+                                <option value="13">Transporte público</option>
+                                <option value="10">Vehículo propio</option>
+                                <option value="7">Bicicleta</option>
+                                <option value="5">Caminando</option>
+                              </select>
+                            </div>
+                            {MessageError(errors.medio_transporte)}
+                          </div>
+                        </li>
+                      </div>
+                    </ol>
                   </div>
                 </section>
               </div>
@@ -683,100 +782,117 @@ const Instrument = () => {
                 {/* Académico */}
                 <section>
                   <div className="card-body pt-0">
-                    <h4 className="font-20 mb-20">Académico</h4>
-                    <div className="row">
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <label>
-                            ¿La carrera que estaba estudiando era de su interés
-                            personal?
-                          </label>
-                          <div className="custom-select-inst-wrapper">
-                            <select
-                              name="interes_carrera"
-                              className="form-control custom-select-inst"
-                              value={answers.interes_carrera}
-                              onChange={handleChange}
-                            >
-                              <option value="-1">Selecciona una opción</option>
-                              <option value="13">
-                                Totalmente de mi interés
-                              </option>
-                              <option value="10">Algo de mi interés</option>
-                              <option value="7">Poco de mi interés</option>
-                              <option value="5">Nada de mi interés</option>
-                            </select>
+                    <ol className="numeric-li row">
+                      <div className="col gripy">
+                        <li>
+                          <div className="form-group">
+                            <label>
+                              ¿La carrera que estaba estudiando era de su
+                              interés personal?
+                            </label>
+                            <div className="custom-select-inst-wrapper">
+                              <select
+                                name="interes_carrera"
+                                className="form-control custom-select-inst"
+                                value={answers.interes_carrera}
+                                onChange={handleChange}
+                              >
+                                <option value="-1">
+                                  Selecciona una opción
+                                </option>
+                                <option value="13">
+                                  Totalmente de mi interés
+                                </option>
+                                <option value="10">Algo de mi interés</option>
+                                <option value="7">Poco de mi interés</option>
+                                <option value="5">Nada de mi interés</option>
+                              </select>
+                            </div>
+                            {MessageError(errors.interes_carrera)}
                           </div>
-                          {MessageError(errors.interes_carrera)}
-                        </div>
-                        <div className="form-group">
-                          <label className="font-14 bold mb-2">
-                            ¿Cómo califica su experiencia de aprendizaje?
-                          </label>
-                          <div className="custom-select-inst-wrapper">
-                            <select
-                              name="experiencia_aprendizaje"
-                              className="form-control custom-select-inst"
-                              value={answers.experiencia_aprendizaje}
-                              onChange={handleChange}
-                            >
-                              <option value="-1">Selecciona una opción</option>
-                              <option value="13">Excelente</option>
-                              <option value="10">Buena</option>
-                              <option value="7">Regular</option>
-                              <option value="5">Mala</option>
-                            </select>
+                        </li>
+                        <li>
+                          <div className="form-group">
+                            <label>
+                              ¿Cómo califica su experiencia de aprendizaje?
+                            </label>
+                            <div className="custom-select-inst-wrapper">
+                              <select
+                                name="experiencia_aprendizaje"
+                                className="form-control custom-select-inst"
+                                value={answers.experiencia_aprendizaje}
+                                onChange={handleChange}
+                              >
+                                <option value="-1">
+                                  Selecciona una opción
+                                </option>
+                                <option value="13">Excelente</option>
+                                <option value="10">Buena</option>
+                                <option value="7">Regular</option>
+                                <option value="5">Mala</option>
+                              </select>
+                            </div>
+                            {MessageError(errors.experiencia_aprendizaje)}
                           </div>
-                          {MessageError(errors.experiencia_aprendizaje)}
-                        </div>
+                        </li>
                       </div>
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <label className="font-14 bold mb-2">
-                            ¿Qué tan útil considera que es la carrera estudiada
-                            con su actualproyecto de vida y profesional?
-                          </label>
-                          <div className="custom-select-inst-wrapper">
-                            <select
-                              name="utilidad_carrera"
-                              className="form-control custom-select-inst"
-                              value={answers.utilidad_carrera}
-                              onChange={handleChange}
-                            >
-                              <option value="-1">Selecciona una opción</option>
-                              <option value="13">Muy útil</option>
-                              <option value="10">Bastante útil</option>
-                              <option value="7">Poco útil</option>
-                              <option value="5">Nada útil</option>
-                            </select>
+                      <div className="col gripy">
+                        <li>
+                          <div className="form-group">
+                            <label>
+                              ¿Qué tan útil considera que es la carrera
+                              profesional?
+                            </label>
+                            <div className="custom-select-inst-wrapper">
+                              <select
+                                name="utilidad_carrera"
+                                className="form-control custom-select-inst"
+                                value={answers.utilidad_carrera}
+                                onChange={handleChange}
+                              >
+                                <option value="-1">
+                                  Selecciona una opción
+                                </option>
+                                <option value="13">Muy útil</option>
+                                <option value="10">Bastante útil</option>
+                                <option value="7">Poco útil</option>
+                                <option value="5">Nada útil</option>
+                              </select>
+                            </div>
+                            {MessageError(errors.utilidad_carrera)}
                           </div>
-                          {MessageError(errors.utilidad_carrera)}
-                        </div>
-                        <div className="form-group">
-                          <label className="font-14 bold mb-2">
-                            ¿Cuáles fueron las principales dificultades
-                            académicas que enfrentó mientras estudiaba?
-                          </label>
-                          <div className="custom-select-inst-wrapper">
-                            <select
-                              name="dificultades_academicas"
-                              className="form-control custom-select-inst"
-                              value={answers.dificultades_academicas}
-                              onChange={handleChange}
-                            >
-                              <option value="-1">Selecciona una opción</option>
-                              <option value="13">
-                                Comprensión de los contenidos
-                              </option>
-                              <option value="10">Gestión del tiempo</option>
-                              <option value="7">Relación con profesores</option>
-                              <option value="5">Falta de recursos</option>
-                            </select>
+                        </li>
+                        <li>
+                          <div className="form-group">
+                            <label>
+                              ¿Cuáles fueron las principales dificultades
+                              académicas que enfrentó mientras estudiaba?
+                            </label>
+                            <div className="custom-select-inst-wrapper">
+                              <select
+                                name="dificultades_academicas"
+                                className="form-control custom-select-inst"
+                                value={answers.dificultades_academicas}
+                                onChange={handleChange}
+                              >
+                                <option value="-1">
+                                  Selecciona una opción
+                                </option>
+                                <option value="13">
+                                  Comprensión de los contenidos
+                                </option>
+                                <option value="10">Gestión del tiempo</option>
+                                <option value="7">
+                                  Relación con profesores
+                                </option>
+                                <option value="5">Falta de recursos</option>
+                              </select>
+                            </div>
+                            {MessageError(errors.dificultades_academicas)}
                           </div>
-                          {MessageError(errors.dificultades_academicas)}
-                        </div>
+                        </li>
                       </div>
-                    </div>
+                    </ol>
                   </div>
                 </section>
               </div>
@@ -786,103 +902,120 @@ const Instrument = () => {
                 {/* Institucional */}
                 <section>
                   <div className="card-body pt-0">
-                    <h4 className="font-20 mb-20">Institucional</h4>
-                    <div className="row">
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <label className="font-14 bold mb-2">
-                            ¿Considera que recibió suficiente apoyo académico
-                            por parte de la universidad?
-                          </label>
-                          <div className="custom-select-inst-wrapper">
-                            <select
-                              name="apoyo_academico"
-                              className="form-control custom-select-inst"
-                              value={answers.apoyo_academico}
-                              onChange={handleChange}
-                            >
-                              <option value="-1">Selecciona una opción</option>
-                              <option value="13">Sí, en todo momento</option>
-                              <option value="10">Sí, pocas ocasiones</option>
-                              <option value="7">No, nunca</option>
-                              <option value="5">No lo solicité</option>
-                            </select>
+                    <ol className="numeric-li row">
+                      <div className="col gripy">
+                        <li>
+                          <div className="form-group">
+                            <label>
+                              ¿Considera que recibió suficiente apoyo académico
+                              por parte de la universidad?
+                            </label>
+                            <div className="custom-select-inst-wrapper">
+                              <select
+                                name="apoyo_academico"
+                                className="form-control custom-select-inst"
+                                value={answers.apoyo_academico}
+                                onChange={handleChange}
+                              >
+                                <option value="-1">
+                                  Selecciona una opción
+                                </option>
+                                <option value="13">Sí, en todo momento</option>
+                                <option value="10">Sí, pocas ocasiones</option>
+                                <option value="7">No, nunca</option>
+                                <option value="5">No lo solicité</option>
+                              </select>
+                            </div>
+                            {MessageError(errors.apoyo_academico)}
                           </div>
-                          {MessageError(errors.apoyo_academico)}
-                        </div>
-                        <div className="form-group">
-                          <label className="font-14 bold mb-2">
-                            ¿Cómo califica la infraestructura física de la
-                            institución?
-                          </label>
-                          <div className="custom-select-inst-wrapper">
-                            <select
-                              name="infraestructura"
-                              className="form-control custom-select-inst"
-                              value={answers.infraestructura}
-                              onChange={handleChange}
-                            >
-                              <option value="-1">Selecciona una opción</option>
-                              <option value="13">Excelente</option>
-                              <option value="10">Buena</option>
-                              <option value="7">Regular</option>
-                              <option value="5">Mala</option>
-                            </select>
+                        </li>
+                        <li>
+                          <div className="form-group">
+                            <label>
+                              ¿Cómo califica la infraestructura física de la
+                              institución?
+                            </label>
+                            <div className="custom-select-inst-wrapper">
+                              <select
+                                name="infraestructura"
+                                className="form-control custom-select-inst"
+                                value={answers.infraestructura}
+                                onChange={handleChange}
+                              >
+                                <option value="-1">
+                                  Selecciona una opción
+                                </option>
+                                <option value="13">Excelente</option>
+                                <option value="10">Buena</option>
+                                <option value="7">Regular</option>
+                                <option value="5">Mala</option>
+                              </select>
+                            </div>
+                            {MessageError(errors.infraestructura)}
                           </div>
-                          {MessageError(errors.infraestructura)}
-                        </div>
+                        </li>
                       </div>
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <label className="font-14 bold mb-2">
-                            ¿Cómo evalúa la calidad de la conectividad a
-                            internet en la institución?
-                          </label>
-                          <div className="custom-select-inst-wrapper">
-                            <select
-                              name="conectividad"
-                              className="form-control custom-select-inst"
-                              value={answers.conectividad}
-                              onChange={handleChange}
-                            >
-                              <option value="-1">Selecciona una opción</option>
-                              <option value="13">Muy buena</option>
-                              <option value="10">Buena</option>
-                              <option value="7">Regular</option>
-                              <option value="5">Mala</option>
-                            </select>
+                      <div className="col gripy">
+                        <li>
+                          <div className="form-group">
+                            <label>
+                              ¿Cómo evalúa la calidad de la conectividad a
+                              internet en la institución?
+                            </label>
+                            <div className="custom-select-inst-wrapper">
+                              <select
+                                name="conectividad"
+                                className="form-control custom-select-inst"
+                                value={answers.conectividad}
+                                onChange={handleChange}
+                              >
+                                <option value="-1">
+                                  Selecciona una opción
+                                </option>
+                                <option value="13">Muy buena</option>
+                                <option value="10">Buena</option>
+                                <option value="7">Regular</option>
+                                <option value="5">Mala</option>
+                              </select>
+                            </div>
+                            {MessageError(errors.conectividad)}
                           </div>
-                          {MessageError(errors.conectividad)}
-                        </div>
-                        <div className="form-group">
-                          <label className="font-14 bold mb-2">
-                            ¿Qué percepción tiene sobre la calidad del servicio
-                            ofrecido por el personal administrativo?
-                          </label>
-                          <div className="custom-select-inst-wrapper">
-                            <select
-                              name="calidad_servicio"
-                              className="form-control custom-select-inst"
-                              value={answers.calidad_servicio}
-                              onChange={handleChange}
-                            >
-                              <option value="-1">Selecciona una opción</option>
-                              <option value="13">Muy eficiente y amable</option>
-                              <option value="10">
-                                Eficiente pero poco amable
-                              </option>
-                              <option value="7">
-                                Poco eficiente pero amable
-                              </option>
-                              <option value="5">
-                                Poco eficiente y poco amable
-                              </option>
-                            </select>
+                        </li>
+                        <li>
+                          <div className="form-group">
+                            <label>
+                              ¿Qué percepción tiene sobre la calidad del
+                              servicio ofrecido por el personal administrativo?
+                            </label>
+                            <div className="custom-select-inst-wrapper">
+                              <select
+                                name="calidad_servicio"
+                                className="form-control custom-select-inst"
+                                value={answers.calidad_servicio}
+                                onChange={handleChange}
+                              >
+                                <option value="-1">
+                                  Selecciona una opción
+                                </option>
+                                <option value="13">
+                                  Muy eficiente y amable
+                                </option>
+                                <option value="10">
+                                  Eficiente pero poco amable
+                                </option>
+                                <option value="7">
+                                  Poco eficiente pero amable
+                                </option>
+                                <option value="5">
+                                  Poco eficiente y poco amable
+                                </option>
+                              </select>
+                            </div>
+                            {MessageError(errors.calidad_servicio)}
                           </div>
-                          {MessageError(errors.calidad_servicio)}
-                        </div>
+                        </li>
                       </div>
-                    </div>
+                    </ol>
                   </div>
                   <button type="submit" className="btn btn-primary mx-4 mb-4">
                     Enviar

@@ -3,7 +3,7 @@ import FullLayout from "../../Layouts/FullLayout";
 import "./instrument.scss";
 import footer from "./img/SRA_Advertising.png";
 
-// Icons
+// Icons Nav
 import Socio from "./img/icon_1.svg";
 import Family from "./img/icon_2.svg";
 import Perso from "./img/icon_3.svg";
@@ -14,6 +14,10 @@ import FamilyCheck from "./img/icon_check_2.svg";
 import PersoCheck from "./img/icon_check_3.svg";
 import AcademyCheck from "./img/icon_check_4.svg";
 import InstiCheck from "./img/icon_check_5.svg";
+
+// Icons Back/Next
+import BackButton from "./img/icons/back_button.svg";
+import NextButton from "./img/icons/next_button.svg";
 
 const initialAnswers = {
   ingresos_economicos: "-1",
@@ -87,7 +91,11 @@ const Instrument = () => {
     // $("#smartwizard").smartWizard();
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e:
+      | React.ChangeEvent<HTMLSelectElement>
+      | React.ChangeEvent<HTMLInputElement>
+  ) => {
     const { name, value } = e.target;
     setAnswers((prevAnswers) => ({
       ...prevAnswers,
@@ -393,7 +401,9 @@ const Instrument = () => {
                               <div className="radio-toggle">
                                 <label
                                   className={`option ${
-                                    answers.acceso_internet === "13" ? "active" : ""
+                                    answers.acceso_internet === "13"
+                                      ? "active"
+                                      : ""
                                   }`}
                                 >
                                   <input
@@ -410,7 +420,9 @@ const Instrument = () => {
 
                                 <label
                                   className={`option ${
-                                    answers.acceso_internet === "5" ? "active" : ""
+                                    answers.acceso_internet === "5"
+                                      ? "active"
+                                      : ""
                                   }`}
                                 >
                                   <input
@@ -437,19 +449,44 @@ const Instrument = () => {
                               <label>
                                 ¿Posee acceso a internet en su hogar?
                               </label>
-                              <div className="custom-select-inst-wrapper">
-                                <select
-                                  name="acceso_internet"
-                                  className="form-control custom-select-inst"
-                                  value={answers.acceso_internet}
-                                  onChange={handleChange}
+                              <div className="radio-toggle">
+                                <label
+                                  className={`option ${
+                                    answers.acceso_internet === "13"
+                                      ? "active"
+                                      : ""
+                                  }`}
                                 >
-                                  <option value="-1">
-                                    Selecciona una opción
-                                  </option>
-                                  <option value="13">Sí</option>
-                                  <option value="5">No</option>
-                                </select>
+                                  <input
+                                    type="radio"
+                                    name="acceso_internet"
+                                    value="13"
+                                    className="radio-grad"
+                                    checked={answers.acceso_internet === "13"}
+                                    onChange={handleChange}
+                                  />
+                                  <span className="radio-indicator"></span>
+                                  Sí
+                                </label>
+
+                                <label
+                                  className={`option ${
+                                    answers.acceso_internet === "5"
+                                      ? "active"
+                                      : ""
+                                  }`}
+                                >
+                                  <input
+                                    type="radio"
+                                    name="acceso_internet"
+                                    value="5"
+                                    className="radio-grad"
+                                    checked={answers.acceso_internet === "5"}
+                                    onChange={handleChange}
+                                  />
+                                  <span className="radio-indicator"></span>
+                                  No
+                                </label>
                               </div>
                               {MessageError(errors.acceso_internet)}
                             </div>
@@ -458,22 +495,51 @@ const Instrument = () => {
                         <li>
                           <div className="form-group">
                             <label>
-                              ¿Cuenta con un dispositivo electronico para
+                              ¿Cuenta con un dispositivo electrónico para
                               estudiar?
                             </label>
-                            <div className="custom-select-inst-wrapper">
-                              <select
-                                name="dispositivo_electronico"
-                                className="form-control custom-select-inst"
-                                value={answers.dispositivo_electronico}
-                                onChange={handleChange}
+                            <div className="radio-toggle">
+                              <label
+                                className={`option ${
+                                  answers.dispositivo_electronico === "13"
+                                    ? "active"
+                                    : ""
+                                }`}
                               >
-                                <option value="-1">
-                                  Selecciona una opción
-                                </option>
-                                <option value="si">Sí</option>
-                                <option value="no">No</option>
-                              </select>
+                                <input
+                                  type="radio"
+                                  name="dispositivo_electronico"
+                                  value="13"
+                                  className="radio-grad"
+                                  checked={
+                                    answers.dispositivo_electronico === "13"
+                                  }
+                                  onChange={handleChange}
+                                />
+                                <span className="radio-indicator"></span>
+                                Sí
+                              </label>
+
+                              <label
+                                className={`option ${
+                                  answers.dispositivo_electronico === "5"
+                                    ? "active"
+                                    : ""
+                                }`}
+                              >
+                                <input
+                                  type="radio"
+                                  name="dispositivo_electronico"
+                                  value="5"
+                                  className="radio-grad"
+                                  checked={
+                                    answers.dispositivo_electronico === "5"
+                                  }
+                                  onChange={handleChange}
+                                />
+                                <span className="radio-indicator"></span>
+                                No
+                              </label>
                             </div>
                             {MessageError(errors.dispositivo_electronico)}
                           </div>
@@ -574,19 +640,40 @@ const Instrument = () => {
                         <li>
                           <div className="form-group">
                             <label>¿Tiene hijos a su cargo?</label>
-                            <div className="custom-select-inst-wrapper">
-                              <select
-                                name="tiene_hijos"
-                                className="form-control custom-select-inst"
-                                value={answers.tiene_hijos}
-                                onChange={handleChange}
+                            <div className="radio-toggle">
+                              <label
+                                className={`option ${
+                                  answers.tiene_hijos === "5" ? "active" : ""
+                                }`}
                               >
-                                <option value="-1">
-                                  Selecciona una opción
-                                </option>
-                                <option value="5">Sí</option>
-                                <option value="13">No</option>
-                              </select>
+                                <input
+                                  type="radio"
+                                  name="tiene_hijos"
+                                  value="5"
+                                  className="radio-grad"
+                                  checked={answers.tiene_hijos === "5"}
+                                  onChange={handleChange}
+                                />
+                                <span className="radio-indicator"></span>
+                                Sí
+                              </label>
+
+                              <label
+                                className={`option ${
+                                  answers.tiene_hijos === "13" ? "active" : ""
+                                }`}
+                              >
+                                <input
+                                  type="radio"
+                                  name="tiene_hijos"
+                                  value="13"
+                                  className="radio-grad"
+                                  checked={answers.tiene_hijos === "13"}
+                                  onChange={handleChange}
+                                />
+                                <span className="radio-indicator"></span>
+                                No
+                              </label>
                             </div>
                             {MessageError(errors.tiene_hijos)}
                           </div>
@@ -623,19 +710,44 @@ const Instrument = () => {
                               ¿Alguien en su familia le apoya emocionalmente en
                               sus estudios?
                             </label>
-                            <div className="custom-select-inst-wrapper">
-                              <select
-                                name="apoyo_emocional"
-                                className="form-control custom-select-inst"
-                                value={answers.apoyo_emocional}
-                                onChange={handleChange}
+                            <div className="radio-toggle">
+                              <label
+                                className={`option ${
+                                  answers.apoyo_emocional === "13"
+                                    ? "active"
+                                    : ""
+                                }`}
                               >
-                                <option value="-1">
-                                  Selecciona una opción
-                                </option>
-                                <option value="13">Sí</option>
-                                <option value="5">No</option>
-                              </select>
+                                <input
+                                  type="radio"
+                                  name="apoyo_emocional"
+                                  value="13"
+                                  className="radio-grad"
+                                  checked={answers.apoyo_emocional === "13"}
+                                  onChange={handleChange}
+                                />
+                                <span className="radio-indicator"></span>
+                                Sí
+                              </label>
+
+                              <label
+                                className={`option ${
+                                  answers.apoyo_emocional === "5"
+                                    ? "active"
+                                    : ""
+                                }`}
+                              >
+                                <input
+                                  type="radio"
+                                  name="apoyo_emocional"
+                                  value="5"
+                                  className="radio-grad"
+                                  checked={answers.apoyo_emocional === "5"}
+                                  onChange={handleChange}
+                                />
+                                <span className="radio-indicator"></span>
+                                No
+                              </label>
                             </div>
                             {MessageError(errors.apoyo_emocional)}
                           </div>
@@ -707,19 +819,44 @@ const Instrument = () => {
                               ¿Tiene alguna condición de salud especial o
                               discapacidad?
                             </label>
-                            <div className="custom-select-inst-wrapper">
-                              <select
-                                name="condicion_salud"
-                                className="form-control custom-select-inst"
-                                value={answers.condicion_salud}
-                                onChange={handleChange}
+                            <div className="radio-toggle">
+                              <label
+                                className={`option ${
+                                  answers.condicion_salud === "5"
+                                    ? "active"
+                                    : ""
+                                }`}
                               >
-                                <option value="-1">
-                                  Selecciona una opción
-                                </option>
-                                <option value="5">Sí</option>
-                                <option value="13">No</option>
-                              </select>
+                                <input
+                                  type="radio"
+                                  name="condicion_salud"
+                                  value="5"
+                                  className="radio-grad"
+                                  checked={answers.condicion_salud === "5"}
+                                  onChange={handleChange}
+                                />
+                                <span className="radio-indicator"></span>
+                                Sí
+                              </label>
+
+                              <label
+                                className={`option ${
+                                  answers.condicion_salud === "13"
+                                    ? "active"
+                                    : ""
+                                }`}
+                              >
+                                <input
+                                  type="radio"
+                                  name="condicion_salud"
+                                  value="13"
+                                  className="radio-grad"
+                                  checked={answers.condicion_salud === "13"}
+                                  onChange={handleChange}
+                                />
+                                <span className="radio-indicator"></span>
+                                No
+                              </label>
                             </div>
                             {MessageError(errors.condicion_salud)}
                           </div>
@@ -1037,20 +1174,28 @@ const Instrument = () => {
                 </section>
               </div>
             )}
-            <a
-              style={{ color: "white" }}
-              className="btn mx-3 mt-3"
-              onClick={handleBack}
-            >
-              Previous
-            </a>
-            <a
-              style={{ color: "white" }}
-              className="btn mx-3 mt-3"
-              onClick={handleNext}
-            >
-              Next
-            </a>
+            <div style={{ justifySelf: "right", display: 'flex', alignItems: 'center' }}>
+              <a className="back-but" onClick={handleBack}>
+                <img src={BackButton} alt="No icon" width={27} />
+              </a>
+              {/* <div className="loader">
+                <a
+                  style={{ cursor: "pointer" }}
+                  onClick={handleNext}
+                >
+                  <img src={NextButton} alt="No icon" width={50} />
+                </a>
+              </div> */}
+              <div className="loader">
+                <span>{"->"}</span>
+                {/* <a
+                  style={{ cursor: "pointer" }}
+                  onClick={handleNext}
+                >
+                  <img src={NextButton} alt="No icon" width={50} />
+                </a> */}
+              </div>
+            </div>
           </div>
         </div>
         <div>

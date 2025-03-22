@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import FullLayout from "../../Layouts/FullLayout";
 import "./instrument.scss";
 import footer from "./img/SRA_Advertising.png";
@@ -78,6 +78,19 @@ const initialErrors = {
 };
 
 const Instrument = () => {
+  // Ejemplo
+  const [progress, setProgress] = useState(0);
+
+  const handleProgress = (type: String) => {
+    type === "add"
+      ? setProgress((prev) => (prev >= 100 ? 0 : prev + 25)) // Incrementa de 20% en 20%
+      : setProgress((prev) => (prev >= 100 ? 0 : prev - 25)); // Incrementa de 20% en 20%
+  };
+
+  const radius = 40;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference - (progress / 100) * circumference;
+
   const [answers, setAnswers] = React.useState(initialAnswers);
   const [errors, setErrors] = React.useState(initialErrors);
   const [formSubmitted, setFormSubmitted] = React.useState(false);
@@ -174,7 +187,7 @@ const Instrument = () => {
               <a
                 type="button"
                 className={`nav-link ${step === 1 ? "shadow" : "inactive"}`}
-                onClick={() => setStep(1)}
+                onClick={() => {setStep(1), setProgress(0)}}
               >
                 <img
                   src={step === 1 ? SocioCheck : Socio}
@@ -188,7 +201,7 @@ const Instrument = () => {
               <a
                 type="button"
                 className={`nav-link ${step === 2 ? "shadow" : "inactive"}`}
-                onClick={() => setStep(2)}
+                onClick={() => {setStep(2), setProgress(25)}}
               >
                 <img
                   src={step === 2 ? FamilyCheck : Family}
@@ -202,7 +215,7 @@ const Instrument = () => {
               <a
                 type="button"
                 className={`nav-link ${step === 3 ? "shadow" : "inactive"}`}
-                onClick={() => setStep(3)}
+                onClick={() => {setStep(3), setProgress(50)}}
               >
                 <img
                   src={step === 3 ? PersoCheck : Perso}
@@ -216,7 +229,7 @@ const Instrument = () => {
               <a
                 type="button"
                 className={`nav-link ${step === 4 ? "shadow" : "inactive"}`}
-                onClick={() => setStep(4)}
+                onClick={() => {setStep(4), setProgress(75)}}
               >
                 <img
                   src={step === 4 ? AcademyCheck : Academy}
@@ -230,7 +243,7 @@ const Instrument = () => {
               <a
                 type="button"
                 className={`nav-link ${step === 5 ? "shadow" : ""}`}
-                onClick={() => setStep(5)}
+                onClick={() => {setStep(5), setProgress(100)}}
               >
                 <img
                   src={step === 5 ? InstiCheck : Insti}
@@ -1174,26 +1187,57 @@ const Instrument = () => {
                 </section>
               </div>
             )}
-            <div style={{ justifySelf: "right", display: 'flex', alignItems: 'center' }}>
-              <a className="back-but" onClick={handleBack}>
+            <div
+              style={{
+                justifySelf: "right",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <a
+                className="back-but"
+                onClick={() => {
+                  handleBack(), handleProgress("minus");
+                }}
+              >
                 <img src={BackButton} alt="No icon" width={27} />
               </a>
               {/* <div className="loader">
                 <a
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer", zIndex: 99999 }}
                   onClick={handleNext}
                 >
                   <img src={NextButton} alt="No icon" width={50} />
                 </a>
               </div> */}
-              <div className="loader">
-                <span>{"->"}</span>
-                {/* <a
-                  style={{ cursor: "pointer" }}
-                  onClick={handleNext}
+
+              <div className="progress-container">
+                <svg width="100" height="100">
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r={radius}
+                    stroke="#FF3D00"
+                    strokeWidth="5"
+                    fill="transparent"
+                    strokeDasharray={circumference}
+                    strokeDashoffset={offset}
+                    strokeLinecap="round"
+                    style={{
+                      transition: "stroke-dashoffset 0.5s ease",
+                      transform: "rotate(-90deg)",
+                      transformOrigin: "50% 50%",
+                    }}
+                  />
+                </svg>
+                <button
+                  className="progress-button"
+                  onClick={() => {
+                    handleNext(), handleProgress("add");
+                  }}
                 >
-                  <img src={NextButton} alt="No icon" width={50} />
-                </a> */}
+                  Click
+                </button>
               </div>
             </div>
           </div>

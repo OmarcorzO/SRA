@@ -17,7 +17,7 @@ import InstiCheck from "./img/icon_check_5.svg";
 
 // Icons Back/Next
 import BackButton from "./img/icons/back_button.svg";
-import NextButton from "./img/icons/next_button.svg";
+import ArrowNext from "./img/icons/arrow_next.svg";
 
 const initialAnswers = {
   ingresos_economicos: "-1",
@@ -82,9 +82,11 @@ const Instrument = () => {
   const [progress, setProgress] = useState(0);
 
   const handleProgress = (type: String) => {
-    type === "add"
-      ? setProgress((prev) => (prev >= 100 ? 0 : prev + 25)) // Incrementa de 20% en 20%
-      : setProgress((prev) => (prev >= 100 ? 0 : prev - 25)); // Incrementa de 20% en 20%
+    if (type === "add") {
+      step !== 5 && setProgress((prev) => (prev >= 100 ? 0 : prev + 25)); // Incrementa de 20% en 20%
+    } else {
+      setProgress((prev) => (prev > 100 ? 0 : prev - 25)); // Incrementa de 20% en 20%
+    }
   };
 
   const radius = 40;
@@ -99,10 +101,6 @@ const Instrument = () => {
     factor_socio?: number;
   }>({});
   const [step, setStep] = React.useState(1);
-
-  React.useEffect(() => {
-    // $("#smartwizard").smartWizard();
-  }, []);
 
   const handleChange = (
     e:
@@ -187,7 +185,9 @@ const Instrument = () => {
               <a
                 type="button"
                 className={`nav-link ${step === 1 ? "shadow" : "inactive"}`}
-                onClick={() => {setStep(1), setProgress(0)}}
+                onClick={() => {
+                  setStep(1), setProgress(0);
+                }}
               >
                 <img
                   src={step === 1 ? SocioCheck : Socio}
@@ -201,7 +201,9 @@ const Instrument = () => {
               <a
                 type="button"
                 className={`nav-link ${step === 2 ? "shadow" : "inactive"}`}
-                onClick={() => {setStep(2), setProgress(25)}}
+                onClick={() => {
+                  setStep(2), setProgress(25);
+                }}
               >
                 <img
                   src={step === 2 ? FamilyCheck : Family}
@@ -215,7 +217,9 @@ const Instrument = () => {
               <a
                 type="button"
                 className={`nav-link ${step === 3 ? "shadow" : "inactive"}`}
-                onClick={() => {setStep(3), setProgress(50)}}
+                onClick={() => {
+                  setStep(3), setProgress(50);
+                }}
               >
                 <img
                   src={step === 3 ? PersoCheck : Perso}
@@ -229,7 +233,9 @@ const Instrument = () => {
               <a
                 type="button"
                 className={`nav-link ${step === 4 ? "shadow" : "inactive"}`}
-                onClick={() => {setStep(4), setProgress(75)}}
+                onClick={() => {
+                  setStep(4), setProgress(75);
+                }}
               >
                 <img
                   src={step === 4 ? AcademyCheck : Academy}
@@ -243,7 +249,9 @@ const Instrument = () => {
               <a
                 type="button"
                 className={`nav-link ${step === 5 ? "shadow" : ""}`}
-                onClick={() => {setStep(5), setProgress(100)}}
+                onClick={() => {
+                  setStep(5), setProgress(100);
+                }}
               >
                 <img
                   src={step === 5 ? InstiCheck : Insti}
@@ -269,7 +277,7 @@ const Instrument = () => {
                 {/* Socioeconómico */}
                 <section>
                   <div className="card-body pt-0">
-                    <ol className="numeric-li row">
+                    <ol className="numeric-li row m-0">
                       <div className="col gripy">
                         <li>
                           <div className="form-group">
@@ -1167,9 +1175,9 @@ const Instrument = () => {
                       </div>
                     </ol>
                   </div>
-                  <button type="submit" className="btn btn-primary mx-4 mb-4">
+                  {/* <button type="submit" className="btn btn-primary mx-4 mb-4">
                     Enviar
-                  </button>
+                  </button> */}
                 </section>
               </div>
             )}
@@ -1194,14 +1202,16 @@ const Instrument = () => {
                 alignItems: "center",
               }}
             >
-              <a
-                className="back-but"
-                onClick={() => {
-                  handleBack(), handleProgress("minus");
-                }}
-              >
-                <img src={BackButton} alt="No icon" width={27} />
-              </a>
+              {step !== 1 && (
+                <a
+                  className="back-but"
+                  onClick={() => {
+                    handleBack(), handleProgress("minus");
+                  }}
+                >
+                  <img src={BackButton} alt="No icon" width={40} />
+                </a>
+              )}
               {/* <div className="loader">
                 <a
                   style={{ cursor: "pointer", zIndex: 99999 }}
@@ -1213,11 +1223,16 @@ const Instrument = () => {
 
               <div className="progress-container">
                 <svg width="100" height="100">
+                  <linearGradient id="linearColors" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="41%" stop-color="#ff6a00"></stop>
+                    <stop offset="82%" stop-color="#8a6cff"></stop>
+                  </linearGradient>
                   <circle
                     cx="50"
                     cy="50"
                     r={radius}
-                    stroke="#FF3D00"
+                    // stroke="purple"
+                    stroke="url(#linearColors)"
                     strokeWidth="5"
                     fill="transparent"
                     strokeDasharray={circumference}
@@ -1230,14 +1245,14 @@ const Instrument = () => {
                     }}
                   />
                 </svg>
-                <button
+                <a
                   className="progress-button"
                   onClick={() => {
                     handleNext(), handleProgress("add");
                   }}
                 >
-                  Click
-                </button>
+                  <img src={ArrowNext} alt="No icon" width={30} />
+                </a>
               </div>
             </div>
           </div>

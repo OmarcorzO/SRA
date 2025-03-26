@@ -1,149 +1,157 @@
-// const StudentOpt = [
-//   { name: "Inicio", submenu: [] },
-//   {
-//     name: "Reintegro",
-//     submenu: [{ name: "Solicitudes" }, { name: "Consulta de estado" }],
-//   },
-//   { name: "Cargar documentos", submenu: [] },
-//   {
-//     name: "Modelo Predictivo",
-//     submenu: [{ name: "Video tutorial" }],
-//   },
-//   { name: "Contacto", submenu: [{ name: "Mensajería y seguimiento" }] },
-//   {
-//     name: "Sugerencias",
-//     submenu: [{ name: "Soporte" }],
-//   },
-// ];
+const StudentOpt = [
+  { name: "Inicio", submenu: [] },
+  {
+    name: "Perfil del estudiante",
+  },
+  {
+    name: "Gestión de Solicitudes",
+    submenu: [
+      { name: "Seguimiento de Estado Solicitud" },
+      { name: "Solicitudes de Reintegro" },
+      { name: "Nueva solicitud de Reintegro" },
+    ],
+  },
+  {
+    name: "Cargar documentos",
+    submenu: [{ name: "Video tutorial" }],
+  },
+  { name: "Soporte técnico", submenu: [{ name: "Crear una incidencia" }] },
+  { name: "Contacto", submenu: [{ name: "Gestión de Contacto y Mensajería" }] },
+  {
+    name: "Sugerencias",
+    submenu: [{ name: "Valoración de procesos" }],
+  },
+];
 
-// const GestorOpt = [
-//   { name: "Inicio", submenu: [] },
-//   {
-//     name: "Analíticas y Reportes",
-//     submenu: [
-//       { name: "Reportes", path: '/instrumento' },
-//       { name: "Métricas" },
-//       { name: "Visualizar datos" },
-//       { name: "Configuración Análiticas y Métricas" },
-//       { name: "Funcionalidades" },
-//       { name: "Roles" },
-//       { name: "Auditoría de solicitudes" },
-//       { name: "Caracterización" },
-//       { name: "Variables" },
-//     ],
-//   },
-//   { name: "Gestión de Reintegros", submenu: [] },
-//   {
-//     name: "Modelo Predictivo",
-//     submenu: [{ name: "Vídeo tutorial" }, { name: "Informe de predicciones" }],
-//   },
-//   { name: "Contacto", submenu: [{ name: "Mensajería y seguimiento" }] },
-// ];
+const GestorOpt = [
+  { name: "Inicio", submenu: [] },
+  {
+    name: "Metas y cumplimientos",
+    submenu: [
+      { name: "Reportes de Reintegros y Matriculados", path: "/instrumento" },
+    ],
+  },
+  {
+    name: "Reportes solicitudes",
+    submenu: [{ name: "Reportes Solicitudes de Reintegro" }],
+  },
+  {
+    name: "Perfil del estudiante",
+  },
+  {
+    name: "Reportes predictivos",
+    submenu: [
+      { name: "MacroReporte Modelo Predictivo" },
+      { name: "Reportes de Modelo Académico" },
+      { name: "Reportes de Modelo Caracterización" },
+      { name: "Reportes de Modelo Contacto" },
+      { name: "Reportes de Modelo Financieros" },
+    ],
+  },
+  {
+    name: "Gestión de Solicitudes",
+    submenu: [{ name: "Gestión de Solicitudes de Reintegro" }],
+  },
+  { nam: "Acerca de SRA", submenu: [{ name: "Vídeo tutorial" }] },
+  { name: "Soporte técnico", submenu: [{ name: "Crear una incidencia" }] },
+  { name: "Contacto", submenu: [{ name: "Gestión de Contacto y Mensajería" }] },
+];
 
-// const CoordinatorOpt = [
-//   { name: "Inicio", submenu: [] },
-//   {
-//     name: "Analíticas y Reportes",
-//     submenu: [
-//       { name: "Reportes" },
-//       { name: "Métricas" },
-//       { name: "Visualizar datos" },
-//       { name: "Configuración Análiticas y Métricas" },
-//       { name: "Funcionalidades" },
-//       { name: "Roles" },
-//       { name: "Auditoría de solicitudes" },
-//     ],
-//   },
-//   {
-//     name: "Gestión de Reintegros",
-//     submenu: [
-//       { name: "Indicadores de riesgos" },
-//       { name: "Exportar datos" },
-//       { name: "Administrar solicitudes" },
-//       { name: "Reportes y auditorías de solicitudes de reintegro" },
-//       { name: "Variables académicas" },
-//     ],
-//   },
-//   {
-//     name: "Modelo Predictivo",
-//     submenu: [{ name: "Vídeo tutorial" }, { name: "Informe de predicciones" }],
-//   },
-//   {
-//     name: "Metas y Cumplimientos",
-//     submenu: [{ name: "Administrar" }, { name: "Rendimiento de reintegros" }],
-//   },
-//   {
-//     name: "Usuarios",
-//     submenu: [{ name: "Gestionar usuarios" }, { name: "Permisos" }],
-//   },
-// ];
+const CoordinatorOpt = [
+  { name: "Inicio", submenu: [] },
+  {
+    name: "Metas y cumplimientos",
+    submenu: [
+      { name: "Reportes de Reintegros y Matriculados", path: "/instrumento" },
+    ],
+  },
+  {
+    name: "Reportes solicitudes",
+    submenu: [{ name: "Reportes Solicitudes de Reintegro" }],
+  },
+  {
+    name: "Perfil del estudiante",
+  },
+  {
+    name: "Reportes predictivos",
+    submenu: [
+      { name: "MacroReporte Modelo Predictivo" },
+      { name: "Reportes de Modelo Académico" },
+      { name: "Reportes de Modelo Caracterización" },
+      { name: "Reportes de Modelo Contacto" },
+      { name: "Reportes de Modelo Financieros" },
+    ],
+  },
+  {
+    name: "Usuarios",
+  },
+  { nam: "Acerca de SRA", submenu: [{ name: "Vídeo tutorial" }] },
+  {
+    name: "Gestión de Solicitudes",
+    submenu: [{ name: "Gestión de Solicitudes de Reintegro" }],
+  },
+  { name: "Soporte técnico", submenu: [{ name: "Crear una incidencia" }] },
+  {
+    name: "Configuración General",
+    submenu: [{ name: "Previsualización de Analíticas y Métricas" }],
+  },
+];
 
-// const AdministratorOpt = [
-//   { name: "Inicio", submenu: [] },
-//   { name: "Panel de Control", submenu: [] },
-//   {
-//     name: "Analíticas y Reportes",
-//     submenu: [
-//       { name: "Reportes" },
-//       { name: "Métricas" },
-//       { name: "Visualizar datos" },
-//       { name: "Configuración Análiticas y Métricas" },
-//       { name: "Funcionalidades" },
-//       { name: "Roles" },
-//       { name: "Auditoría de solicitudes" },
-//     ],
-//   },
-//   {
-//     name: "Reportes",
-//     submenu: [
-//       { name: "Matriculados" },
-//       { name: "Análisis de tendencias" },
-//       { name: "Caracterización de estudiantes" },
-//       { name: "Datos de contacto" },
-//       { name: "Variables Académicas y Financieras" },
-//       { name: "Reportes Académicos y Financieros" },
-//     ],
-//   },
-//   {
-//     name: "Gestión de Reintegros",
-//     submenu: [
-//       { name: "Indicadores de riesgos" },
-//       { name: "Exportar datos" },
-//       { name: "Administrar solicitudes" },
-//       { name: "Reportes y auditorías de solicitudes de reintegro" },
-//       { name: "Variables académicas" },
-//     ],
-//   },
-//   {
-//     name: "Modelo Predictivo",
-//     submenu: [{ name: "Vídeo tutorial" }, { name: "Informe de predicciones" }],
-//   },
-//   {
-//     name: "Metas y Cumplimientos",
-//     submenu: [
-//       { name: "Configuración de metas" },
-//       { name: "Seguimiento de cumplimientos" },
-//     ],
-//   },
-//   {
-//     name: "MacroReporte Predictivo",
-//     submenu: [
-//       { name: "Resumen consolidado del modelo" },
-//       { name: "Análisis de tendencias" },
-//       { name: "Predicciones de Reintegros y Matriculados" },
-//     ],
-//   },
-//   {
-//     name: "Usuarios",
-//     submenu: [{ name: "Gestionar usuarios" }, { name: "Permisos" }],
-//   },
-//   {
-//     name: "Configuraciones",
-//     submenu: [
-//       { name: "Sistema" },
-//       { name: "Políticas del sistema" },
-//       { name: "Funcionalidades" },
-//       { name: "Roles" },
-//     ],
-//   },
-// ];
+const AdministratorOpt = [
+  { name: "Inicio", submenu: [] },
+  {
+    name: "Metas y cumplimientos",
+    submenu: [
+      { name: "Reportes de Reintegros y Matriculados", path: "/instrumento" },
+    ],
+  },
+  {
+    name: "Reportes solicitudes",
+    submenu: [{ name: "Reportes Solicitudes de Reintegro" }],
+  },
+  {
+    name: "Perfil del estudiante",
+  },
+  {
+    name: "Reportes predictivos",
+    submenu: [
+      { name: "MacroReporte Modelo Predictivo" },
+      { name: "Reportes de Modelo Académico" },
+      { name: "Reportes de Modelo Caracterización" },
+      { name: "Reportes de Modelo Contacto" },
+      { name: "Reportes de Modelo Financieros" },
+    ],
+  },
+  {
+    name: "Gestión de Solicitudes",
+    submenu: [
+      { name: "Gestión de Solicitudes de Reintegro" },
+      { name: "Seguimiento de Estado Solicitud" },
+      { name: "Solicitudes de Reintegro" },
+    ],
+  },
+  {
+    name: "Usuarios",
+    submenu: [{ name: "Gestión de Usuarios" }],
+  },
+  { name: "Acerca de SRA", submenu: [{ name: "Vídeo tutorial" }] },
+  {
+    name: "Cargar documentos",
+    submenu: [{ name: "Video tutorial" }],
+  },
+  {
+    name: "Sugerencias",
+    submenu: [{ name: "Valoración de procesos" }],
+  },
+  { name: "Soporte técnico", submenu: [{ name: "Crear una incidencia" }] },
+  { name: "Contacto", submenu: [{ name: "Gestión de Contacto y Mensajería" }] },
+  {
+    name: "Configuración General",
+    submenu: [
+      { name: "Previsualización de Analíticas y Métricas" },
+      { name: "Configuración de Metas" },
+    ],
+  },
+];
+
+export { AdministratorOpt, CoordinatorOpt, GestorOpt, StudentOpt };

@@ -1,5 +1,6 @@
 import React from "react";
 import "./Components.scss";
+import { StudentOpt } from "./SidebarList";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = React.useState(0);
@@ -43,6 +44,22 @@ const Sidebar = () => {
         </div>
         <nav className="geex-sidebar__menu-wrapper">
           <ul className="geex-sidebar__menu">
+            {StudentOpt.map((item, index) => {
+              return (
+                <li className="geex-sidebar__menu__item has-children">
+                  <a
+                    href="#"
+                    className="geex-sidebar__menu__link"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      selOpt(2);
+                    }}
+                  >
+                    <span>{item.name}</span>
+                  </a>
+                </li>
+              );
+            })}
             <li className="geex-sidebar__menu__item has-children">
               <a
                 href="#"

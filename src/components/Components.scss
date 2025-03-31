@@ -47,9 +47,35 @@
     // opacity: 0;
     // overflow: hidden;
     transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
-  }
+}
 
 .geex-sidebar__menu__item.open .geex-sidebar__submenu {
     // max-height: 300px; /* Ajusta según el contenido */
     opacity: 1;
-  }
+}
+
+.geex-sidebar__menu-wrapper {
+    max-width: 250px;
+}
+
+
+.geex-sidebar__menu__link {
+    color: #8E8B99;
+
+    a {
+        color: #8E8B99;
+    }
+    a:hover {
+        color: var(--primaryColor);
+    }
+
+    svg path {
+        fill: #8E8B99;
+    }
+}
+
+.geex-sidebar__submenu {
+    margin-left: 12px;
+    width: 90%;
+    margin-bottom: 15px
+}

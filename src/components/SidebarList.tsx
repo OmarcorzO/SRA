@@ -1,45 +1,78 @@
+import React from "react";
+
+import IconMetas from "./icons/iconMetas.tsx";
+import IconAboutSRA from "./icons/iconAboutSRA.tsx";
+import IconContacto from "./icons/iconContacto.tsx";
+import IconHome from "./icons/iconHome.tsx";
+import IconProfile from "./icons/iconProfile.tsx";
+import IconReportePredi from "./icons/iconReportePredi.tsx";
+import IconReporteSoli from "./icons/iconReporteSoli.tsx";
+import IconSettings from "./icons/iconSettings.tsx";
+import IconSolicitud from "./icons/iconSolicitud.tsx";
+import IconSoporte from "./icons/iconSoporte.tsx";
+import IconSugerencias from "./icons/iconSugerencias.tsx";
+import IconUpload from "./icons/iconUpload.tsx";
+import IconUsuarios from "./icons/iconUsuarios.tsx";
+
 const StudentOpt = [
-  { name: "Inicio", submenu: [] },
+  { name: "Inicio", icon: <IconHome />, submenu: [] },
   {
     name: "Perfil del estudiante",
+    icon: <IconProfile />,
+    submenu: [],
   },
   {
     name: "Gestión de Solicitudes",
+    icon: <IconSolicitud />,
     submenu: [
-      { name: "Seguimiento de Estado Solicitud" },
-      { name: "Solicitudes de Reintegro" },
-      { name: "Nueva solicitud de Reintegro" },
+      { name: "Seguimiento de Estado Solicitud", href: "#" },
+      { name: "Solicitudes de Reintegro", href: "#" },
+      { name: "Nueva solicitud de Reintegro", href: "/instrumento" },
     ],
   },
   {
     name: "Cargar documentos",
-    submenu: [{ name: "Video tutorial" }],
+    icon: <IconUpload />,
+    submenu: [],
   },
-  { name: "Soporte técnico", submenu: [{ name: "Crear una incidencia" }] },
-  { name: "Contacto", submenu: [{ name: "Gestión de Contacto y Mensajería" }] },
+  {
+    name: "Soporte técnico",
+    icon: <IconSoporte />,
+    submenu: [{ name: "Crear una incidencia", href: "#" }],
+  },
+  {
+    name: "Contacto",
+    icon: <IconContacto />,
+    submenu: [{ name: "Gestión de Contacto y Mensajería", href: "#" }],
+  },
   {
     name: "Sugerencias",
-    submenu: [{ name: "Valoración de procesos" }],
+    icon: <IconSugerencias />,
+    submenu: [{ name: "Valoración de procesos", href: "#" }],
   },
 ];
 
 const GestorOpt = [
-  { name: "Inicio", submenu: [] },
+  { name: "Inicio", icon: <IconHome />, submenu: [] },
   {
     name: "Metas y cumplimientos",
+    icon: <IconMetas />,
     submenu: [
       { name: "Reportes de Reintegros y Matriculados", path: "/instrumento" },
     ],
   },
   {
     name: "Reportes solicitudes",
+    icon: <IconReporteSoli />,
     submenu: [{ name: "Reportes Solicitudes de Reintegro" }],
   },
   {
     name: "Perfil del estudiante",
+    icon: <IconProfile />,
   },
   {
     name: "Reportes predictivos",
+    icon: <IconReportePredi />,
     submenu: [
       { name: "MacroReporte Modelo Predictivo" },
       { name: "Reportes de Modelo Académico" },
@@ -50,30 +83,47 @@ const GestorOpt = [
   },
   {
     name: "Gestión de Solicitudes",
+    icon: <IconSolicitud />,
     submenu: [{ name: "Gestión de Solicitudes de Reintegro" }],
   },
-  { nam: "Acerca de SRA", submenu: [{ name: "Vídeo tutorial" }] },
-  { name: "Soporte técnico", submenu: [{ name: "Crear una incidencia" }] },
-  { name: "Contacto", submenu: [{ name: "Gestión de Contacto y Mensajería" }] },
+  {
+    name: "Acerca de SRA",
+    icon: <IconAboutSRA />,
+    submenu: [{ name: "Vídeo tutorial" }],
+  },
+  {
+    name: "Soporte técnico",
+    icon: <IconSoporte />,
+    submenu: [{ name: "Crear una incidencia" }],
+  },
+  {
+    name: "Contacto",
+    icon: <IconContacto />,
+    submenu: [{ name: "Gestión de Contacto y Mensajería" }],
+  },
 ];
 
 const CoordinatorOpt = [
-  { name: "Inicio", submenu: [] },
+  { name: "Inicio", icon: <IconHome />, submenu: [] },
   {
     name: "Metas y cumplimientos",
+    icon: <IconMetas />,
     submenu: [
       { name: "Reportes de Reintegros y Matriculados", path: "/instrumento" },
     ],
   },
   {
     name: "Reportes solicitudes",
+    icon: <IconReporteSoli />,
     submenu: [{ name: "Reportes Solicitudes de Reintegro" }],
   },
   {
     name: "Perfil del estudiante",
+    icon: <IconProfile />,
   },
   {
     name: "Reportes predictivos",
+    icon: <IconReportePredi />,
     submenu: [
       { name: "MacroReporte Modelo Predictivo" },
       { name: "Reportes de Modelo Académico" },
@@ -84,36 +134,51 @@ const CoordinatorOpt = [
   },
   {
     name: "Usuarios",
+    icon: <IconUsuarios />,
   },
-  { nam: "Acerca de SRA", submenu: [{ name: "Vídeo tutorial" }] },
+  {
+    name: "Acerca de SRA",
+    icon: <IconAboutSRA />,
+    submenu: [{ name: "Vídeo tutorial" }],
+  },
   {
     name: "Gestión de Solicitudes",
+    icon: <IconSolicitud />,
     submenu: [{ name: "Gestión de Solicitudes de Reintegro" }],
   },
-  { name: "Soporte técnico", submenu: [{ name: "Crear una incidencia" }] },
+  {
+    name: "Soporte técnico",
+    icon: <IconSoporte />,
+    submenu: [{ name: "Crear una incidencia" }],
+  },
   {
     name: "Configuración General",
+    icon: <IconSettings />,
     submenu: [{ name: "Previsualización de Analíticas y Métricas" }],
   },
 ];
 
 const AdministratorOpt = [
-  { name: "Inicio", submenu: [] },
+  { name: "Inicio", icon: <IconHome />, submenu: [] },
   {
     name: "Metas y cumplimientos",
+    icon: <IconMetas />,
     submenu: [
       { name: "Reportes de Reintegros y Matriculados", path: "/instrumento" },
     ],
   },
   {
     name: "Reportes solicitudes",
+    icon: <IconReporteSoli />,
     submenu: [{ name: "Reportes Solicitudes de Reintegro" }],
   },
   {
     name: "Perfil del estudiante",
+    icon: <IconProfile />,
   },
   {
     name: "Reportes predictivos",
+    icon: <IconReportePredi />,
     submenu: [
       { name: "MacroReporte Modelo Predictivo" },
       { name: "Reportes de Modelo Académico" },
@@ -124,6 +189,7 @@ const AdministratorOpt = [
   },
   {
     name: "Gestión de Solicitudes",
+    icon: <IconSolicitud />,
     submenu: [
       { name: "Gestión de Solicitudes de Reintegro" },
       { name: "Seguimiento de Estado Solicitud" },
@@ -132,21 +198,37 @@ const AdministratorOpt = [
   },
   {
     name: "Usuarios",
+    icon: <IconUsuarios />,
     submenu: [{ name: "Gestión de Usuarios" }],
   },
-  { name: "Acerca de SRA", submenu: [{ name: "Vídeo tutorial" }] },
+  {
+    name: "Acerca de SRA",
+    icon: <IconAboutSRA />,
+    submenu: [{ name: "Vídeo tutorial" }],
+  },
   {
     name: "Cargar documentos",
-    submenu: [{ name: "Video tutorial" }],
+    icon: <IconUpload />,
+    submenu: [],
   },
   {
     name: "Sugerencias",
+    icon: <IconSugerencias />,
     submenu: [{ name: "Valoración de procesos" }],
   },
-  { name: "Soporte técnico", submenu: [{ name: "Crear una incidencia" }] },
-  { name: "Contacto", submenu: [{ name: "Gestión de Contacto y Mensajería" }] },
+  {
+    name: "Soporte técnico",
+    icon: <IconSoporte />,
+    submenu: [{ name: "Crear una incidencia" }],
+  },
+  {
+    name: "Contacto",
+    icon: <IconContacto />,
+    submenu: [{ name: "Gestión de Contacto y Mensajería" }],
+  },
   {
     name: "Configuración General",
+    icon: <IconSettings />,
     submenu: [
       { name: "Previsualización de Analíticas y Métricas" },
       { name: "Configuración de Metas" },

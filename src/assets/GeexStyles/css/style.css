@@ -386,10 +386,10 @@ Sidebar
 }
 
 .geex-sidebar__menu__item {
-  position: relative;
+  /* position: relative; */
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  /* display: flex; */
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -426,7 +426,7 @@ Sidebar
   .geex-sidebar__menu__link {
     gap: 10px;
     font-size: 14px;
-    padding: 12px 25px;
+    padding: 16px 25px;
   }
 }
 

@@ -1,11 +1,18 @@
 import React from "react";
 import "./Components.scss";
-import { StudentOpt } from "./SidebarList";
+import {
+  AdministratorOpt,
+  StudentOpt,
+  CoordinatorOpt,
+  GestorOpt,
+} from "./SidebarList";
+
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = React.useState(0);
 
   const selOpt = (num: number) => {
+    console.log(isOpen, num);
     isOpen === num ? setIsOpen(0) : setIsOpen(num);
   };
 
@@ -22,6 +29,7 @@ const Sidebar = () => {
               className="logo-lite logo-lg"
               src="assets/img/logo.svg"
               alt="logo"
+              width={200}
             />
             <img
               className="logo-dark"
@@ -46,21 +54,35 @@ const Sidebar = () => {
           <ul className="geex-sidebar__menu">
             {StudentOpt.map((item, index) => {
               return (
-                <li className="geex-sidebar__menu__item has-children">
-                  <a
-                    href="#"
-                    className="geex-sidebar__menu__link"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      selOpt(2);
-                    }}
-                  >
-                    <span>{item.name}</span>
-                  </a>
-                </li>
+                <>
+                  <li key={index} className="geex-sidebar__menu__item">
+                    <a
+                      href="#"
+                      className="geex-sidebar__menu__link"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        selOpt(index);
+                      }}
+                    >
+                      {item.icon}
+                      <span>{item.name}</span>
+                    </a>
+                  </li>
+                  {isOpen === index && item.submenu.length > 0 && (
+                    <ul className="geex-sidebar__submenu">
+                      {item.submenu?.map((item, index) => {
+                        return (
+                          <li className="geex-sidebar__menu__link">
+                            <a href={item.href}>{item.name}</a>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
+                </>
               );
             })}
-            <li className="geex-sidebar__menu__item has-children">
+            {/* <li className="geex-sidebar__menu__item has-children">
               <a
                 href="#"
                 className="geex-sidebar__menu__link"
@@ -123,21 +145,9 @@ const Sidebar = () => {
                   </li>
                 </ul>
               )}
-            </li>
+            </li> */}
           </ul>
         </nav>
-        <div className="geex-sidebar__footer">
-          <span className="geex-sidebar__footer__title">
-            Geex Modern Dashboard
-          </span>
-          <p className="geex-sidebar__footer__copyright">
-            © 2024 All Rights Reserved
-          </p>
-          <p className="geex-sidebar__footer__author">
-            Made with <span className="heart-icon">♥</span> by{" "}
-            <a href="#">PixcelsThemes</a>
-          </p>
-        </div>
       </div>
     </div>
     // End Sidebar

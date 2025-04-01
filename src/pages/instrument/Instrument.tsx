@@ -1257,8 +1257,8 @@ const Instrument = () => {
             </div>
           </div>
         </div>
-        <div>
-          <img src={footer} alt="" />
+        <div style={{ maxWidth: "96%"}}>
+          <img src={footer} alt="" width={"100%"}/>
         </div>
       </form>
     </FullLayout>

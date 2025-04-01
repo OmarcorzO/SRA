@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Components.scss";
 import {
   AdministratorOpt,
@@ -6,14 +6,32 @@ import {
   CoordinatorOpt,
   GestorOpt,
 } from "./SidebarList";
-
+import { Link, useLocation } from "react-router";
+import { useSidebar } from "../Layouts/SidebarContext";
 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = React.useState(0);
+  const { isOpen, setIsOpen, openSubmenu, setOpenSubmenu } = useSidebar();
+  const location = useLocation();
 
   const selOpt = (num: number) => {
     console.log(isOpen, num);
     isOpen === num ? setIsOpen(0) : setIsOpen(num);
+  };
+
+  console.log(location.pathname);
+
+  const detectRoute = (selected: number, item: any) => {
+    if (selected === item.pos) {
+      console.log(selected, item);
+      return true;
+    }
+  };
+
+  const checkPosChild = (selected: number, item: any) => {
+    console.log(selected, item);
+    if (selected === item.pos) {
+      return true;
+    }
   };
 
   return (
@@ -56,9 +74,11 @@ const Sidebar = () => {
               return (
                 <>
                   <li key={index} className="geex-sidebar__menu__item">
-                    <a
-                      href="#"
-                      className="geex-sidebar__menu__link"
+                    <Link
+                      to="#"
+                      className={`geex-sidebar__menu__link ${
+                        detectRoute(isOpen, item) && "active"
+                      }`}
                       onClick={(e) => {
                         e.preventDefault();
                         selOpt(index);
@@ -66,14 +86,25 @@ const Sidebar = () => {
                     >
                       {item.icon}
                       <span>{item.name}</span>
-                    </a>
+                    </Link>
                   </li>
                   {isOpen === index && item.submenu.length > 0 && (
                     <ul className="geex-sidebar__submenu">
-                      {item.submenu?.map((item, index) => {
+                      {item.submenu?.map((itemTwo, index) => {
                         return (
-                          <li className="geex-sidebar__menu__link">
-                            <a href={item.href}>{item.name}</a>
+                          <li className="geex-sidebar__menu__item">
+                            <Link
+                              className={`geex-sidebar__menu__link ${
+                                checkPosChild(openSubmenu, itemTwo) && "active"
+                              }`}
+                              to={itemTwo.href}
+                              onClick={(e) => {
+                                // e.preventDefault();
+                                setOpenSubmenu(index);
+                              }}
+                            >
+                              {itemTwo.name}
+                            </Link>
                           </li>
                         );
                       })}
@@ -82,70 +113,6 @@ const Sidebar = () => {
                 </>
               );
             })}
-            {/* <li className="geex-sidebar__menu__item has-children">
-              <a
-                href="#"
-                className="geex-sidebar__menu__link"
-                onClick={(e) => {
-                  e.preventDefault();
-                  selOpt(1);
-                }}
-              >
-                <span>Demo</span>
-              </a>
-              {isOpen === 1 && (
-                <ul className="geex-sidebar__submenu">
-                  <li className="geex-sidebar__menu__link">
-                    <a href="/instrumento">Instrumento</a>
-                  </li>
-                  <li className="geex-sidebar__menu__link">
-                    <a href="/banking">Banking</a>
-                  </li>
-                  <li className="geex-sidebar__menu__link">
-                    <a href="/crypto">Crypto</a>
-                  </li>
-                  <li className="geex-sidebar__menu__link">
-                    <a href="/invoicing">Invoicing</a>
-                  </li>
-                </ul>
-              )}
-            </li>
-            <li className="geex-sidebar__menu__item has-children">
-              <a
-                href="#"
-                className="geex-sidebar__menu__link"
-                onClick={(e) => {
-                  e.preventDefault();
-                  selOpt(2);
-                }}
-              >
-                <span>Layout</span>
-              </a>
-              {isOpen === 2 && (
-                <ul className="geex-sidebar__submenu">
-                  <li className="geex-sidebar__menu__link">
-                    <a href="#" className="geex-customizer__btn--top">
-                      Top Menu
-                    </a>
-                  </li>
-                  <li className="geex-sidebar__menu__link">
-                    <a href="#" className="geex-customizer__btn--side">
-                      Side Menu
-                    </a>
-                  </li>
-                  <li className="geex-sidebar__menu__link">
-                    <a href="#" className="geex-customizer__btn--light">
-                      Light Demo
-                    </a>
-                  </li>
-                  <li className="geex-sidebar__menu__link">
-                    <a href="#" className="geex-customizer__btn--dark">
-                      Dark Demo
-                    </a>
-                  </li>
-                </ul>
-              )}
-            </li> */}
           </ul>
         </nav>
       </div>

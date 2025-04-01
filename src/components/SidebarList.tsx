@@ -15,40 +15,52 @@ import IconUpload from "./icons/iconUpload.tsx";
 import IconUsuarios from "./icons/iconUsuarios.tsx";
 
 const StudentOpt = [
-  { name: "Inicio", icon: <IconHome />, submenu: [] },
+  { name: "Inicio", href: "", pos: 0, icon: <IconHome />, submenu: [] },
   {
     name: "Perfil del estudiante",
+    pos: 1,
+    href: "",
     icon: <IconProfile />,
     submenu: [],
   },
   {
     name: "Gestión de Solicitudes",
+    pos: 2,
+    href: "",
     icon: <IconSolicitud />,
     submenu: [
-      { name: "Seguimiento de Estado Solicitud", href: "#" },
-      { name: "Solicitudes de Reintegro", href: "#" },
-      { name: "Nueva solicitud de Reintegro", href: "/instrumento" },
+      { name: "Seguimiento de Estado Solicitud", href: "#", pos: 0 },
+      { name: "Solicitudes de Reintegro", href: "#", pos: 1 },
+      { name: "Nueva solicitud de Reintegro", href: "/instrumento", pos: 2 },
     ],
   },
   {
     name: "Cargar documentos",
+    pos: 3,
+    href: "",
     icon: <IconUpload />,
     submenu: [],
   },
   {
     name: "Soporte técnico",
+    pos: 4,
+    href: "",
     icon: <IconSoporte />,
-    submenu: [{ name: "Crear una incidencia", href: "#" }],
+    submenu: [{ name: "Crear una incidencia", href: "#", pos: 0 }],
   },
   {
     name: "Contacto",
+    pos: 5,
+    href: "",
     icon: <IconContacto />,
-    submenu: [{ name: "Gestión de Contacto y Mensajería", href: "#" }],
+    submenu: [{ name: "Gestión de Contacto y Mensajería", href: "#", pos: 0 }],
   },
   {
     name: "Sugerencias",
+    pos: 6,
+    href: "",
     icon: <IconSugerencias />,
-    submenu: [{ name: "Valoración de procesos", href: "#" }],
+    submenu: [{ name: "Valoración de procesos", href: "#", pos: 0 }],
   },
 ];
 

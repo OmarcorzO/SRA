@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 // import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router";
@@ -6,10 +6,10 @@ import { BrowserRouter } from "react-router";
 // import App from "./App.tsx";
 // Css plantilla
 import "./assets/bootstrap/css/bootstrap.min.css";
-import './assets/GeexStyles/css/style.css'
-import './assets/DashminStyles/css/style.css'
-import '@iconscout/unicons/css/line.css';
-import './assets/DashminStyles/fonts/icofont/icofont.min.css';
+import "./assets/GeexStyles/css/style.css";
+import "./assets/DashminStyles/css/style.css";
+import "@iconscout/unicons/css/line.css";
+import "./assets/DashminStyles/fonts/icofont/icofont.min.css";
 
 // Import fonts
 import "@fontsource/raleway/100.css"; // Specify weight
@@ -44,9 +44,12 @@ import "@fontsource/dm-sans/800-italic.css"; // Second Specify weight
 import "@fontsource/dm-sans/900-italic.css"; // Second Specify weight
 
 import Routing from "./Routing.tsx";
+import { SidebarProvider } from "./Layouts/SidebarContext.tsx";
 
 createRoot(document.getElementById("root")!).render(
-  <BrowserRouter>
-    <Routing />
-  </BrowserRouter>
+  <SidebarProvider>
+    <BrowserRouter>
+      <Routing />
+    </BrowserRouter>
+  </SidebarProvider>
 );

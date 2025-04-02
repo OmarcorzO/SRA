@@ -15,7 +15,13 @@ import IconUpload from "./icons/iconUpload.tsx";
 import IconUsuarios from "./icons/iconUsuarios.tsx";
 
 const StudentOpt = [
-  { name: "Inicio", href: "/dashboard", pos: 0, icon: <IconHome />, submenu: [] },
+  {
+    name: "Inicio",
+    href: "/dashboard",
+    pos: 0,
+    icon: <IconHome />,
+    submenu: [],
+  },
   {
     name: "Perfil del estudiante",
     pos: 1,
@@ -171,79 +177,109 @@ const CoordinatorOpt = [
 ];
 
 const AdministratorOpt = [
-  { name: "Inicio", icon: <IconHome />, submenu: [] },
+  { name: "Inicio", href: "/dashboard", pos: 0, icon: <IconHome />, submenu: [] },
   {
     name: "Metas y cumplimientos",
+    href: "",
+    pos: 1,
     icon: <IconMetas />,
     submenu: [
-      { name: "Reportes de Reintegros y Matriculados", path: "/instrumento" },
+      {
+        name: "Reportes de Reintegros y Matriculados",
+        path: "/instrumento",
+        href: "",
+        pos: 0,
+      },
     ],
   },
   {
     name: "Reportes solicitudes",
+    href: "",
+    pos: 2,
     icon: <IconReporteSoli />,
-    submenu: [{ name: "Reportes Solicitudes de Reintegro" }],
+    submenu: [{ name: "Reportes Solicitudes de Reintegro", href: "", pos: 0 }],
   },
   {
     name: "Perfil del estudiante",
+    href: "",
+    pos: 3,
     icon: <IconProfile />,
+    submenu: [],
   },
   {
     name: "Reportes predictivos",
+    href: "",
+    pos: 4,
     icon: <IconReportePredi />,
     submenu: [
-      { name: "MacroReporte Modelo Predictivo" },
-      { name: "Reportes de Modelo Académico" },
-      { name: "Reportes de Modelo Caracterización" },
-      { name: "Reportes de Modelo Contacto" },
-      { name: "Reportes de Modelo Financieros" },
+      { name: "MacroReporte Modelo Predictivo", href: "", pos: 0 },
+      { name: "Reportes de Modelo Académico", href: "", pos: 1 },
+      { name: "Reportes de Modelo Caracterización", href: "", pos: 2 },
+      { name: "Reportes de Modelo Contacto", href: "", pos: 3 },
+      { name: "Reportes de Modelo Financieros", href: "", pos: 4 },
     ],
   },
   {
     name: "Gestión de Solicitudes",
+    href: "",
+    pos: 5,
     icon: <IconSolicitud />,
     submenu: [
-      { name: "Gestión de Solicitudes de Reintegro" },
-      { name: "Seguimiento de Estado Solicitud" },
-      { name: "Solicitudes de Reintegro" },
+      { name: "Gestión de Solicitudes de Reintegro", href: "", pos: 0 },
+      { name: "Seguimiento de Estado Solicitud", href: "", pos: 1 },
+      { name: "Solicitudes de Reintegro", href: "/instrumento", pos: 2 },
     ],
   },
   {
     name: "Usuarios",
+    href: "",
+    pos: 6,
     icon: <IconUsuarios />,
-    submenu: [{ name: "Gestión de Usuarios" }],
+    submenu: [{ name: "Gestión de Usuarios", href: "", pos: 0 }],
   },
   {
     name: "Acerca de SRA",
+    href: "",
+    pos: 7,
     icon: <IconAboutSRA />,
-    submenu: [{ name: "Vídeo tutorial" }],
+    submenu: [{ name: "Vídeo tutorial", href: "", pos: 0 }],
   },
   {
     name: "Cargar documentos",
+    href: "",
+    pos: 8,
     icon: <IconUpload />,
     submenu: [],
   },
   {
     name: "Sugerencias",
+    href: "",
+    pos: 9,
     icon: <IconSugerencias />,
-    submenu: [{ name: "Valoración de procesos" }],
+    submenu: [{ name: "Valoración de procesos", href: "", pos: 0 }],
   },
   {
     name: "Soporte técnico",
+    href: "",
+    pos: 10,
     icon: <IconSoporte />,
-    submenu: [{ name: "Crear una incidencia" }],
+    submenu: [{ name: "Crear una incidencia", href: "", pos: 0 }],
   },
   {
     name: "Contacto",
+    href: "",
+    pos: 11,
     icon: <IconContacto />,
-    submenu: [{ name: "Gestión de Contacto y Mensajería" }],
+    submenu: [{ name: "Gestión de Contacto y Mensajería", href: "", pos: 0 }],
   },
   {
     name: "Configuración General",
+    href: "",
+    pos: 12,
     icon: <IconSettings />,
     submenu: [
-      { name: "Previsualización de Analíticas y Métricas" },
-      { name: "Configuración de Metas" },
+      { name: "Previsualización de Analíticas y Métricas", href: "", pos: 0 },
+      { name: "Configuración de Metas", href: "", pos: 1 },
     ],
   },
 ];

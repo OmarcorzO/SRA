@@ -70,7 +70,7 @@ const Sidebar = () => {
         </div>
         <nav className="geex-sidebar__menu-wrapper">
           <ul className="geex-sidebar__menu">
-            {StudentOpt.map((item, index) => {
+            {AdministratorOpt.map((item, index) => {
               return (
                 <>
                   <li key={index} className="geex-sidebar__menu__item">

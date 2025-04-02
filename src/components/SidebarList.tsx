@@ -15,7 +15,7 @@ import IconUpload from "./icons/iconUpload.tsx";
 import IconUsuarios from "./icons/iconUsuarios.tsx";
 
 const StudentOpt = [
-  { name: "Inicio", href: "", pos: 0, icon: <IconHome />, submenu: [] },
+  { name: "Inicio", href: "/dashboard", pos: 0, icon: <IconHome />, submenu: [] },
   {
     name: "Perfil del estudiante",
     pos: 1,

@@ -75,13 +75,13 @@ const Sidebar = () => {
                 <>
                   <li key={index} className="geex-sidebar__menu__item">
                     <Link
-                      to="#"
+                      to={item.href}
                       className={`geex-sidebar__menu__link ${
                         detectRoute(isOpen, item) && "active"
                       }`}
                       onClick={(e) => {
-                        e.preventDefault();
                         selOpt(index);
+                        setOpenSubmenu(-1);
                       }}
                     >
                       {item.icon}
@@ -99,7 +99,6 @@ const Sidebar = () => {
                               }`}
                               to={itemTwo.href}
                               onClick={(e) => {
-                                // e.preventDefault();
                                 setOpenSubmenu(index);
                               }}
                             >

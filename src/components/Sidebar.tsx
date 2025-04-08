@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Components.scss";
 import {
   AdministratorOpt,
@@ -79,7 +79,7 @@ const Sidebar = () => {
                       className={`geex-sidebar__menu__link ${
                         detectRoute(isOpen, item) && "active"
                       }`}
-                      onClick={(e) => {
+                      onClick={() => {
                         selOpt(index);
                         setOpenSubmenu(-1);
                       }}
@@ -98,7 +98,7 @@ const Sidebar = () => {
                                 checkPosChild(openSubmenu, itemTwo) && "active"
                               }`}
                               to={itemTwo.href}
-                              onClick={(e) => {
+                              onClick={() => {
                                 setOpenSubmenu(index);
                               }}
                             >
